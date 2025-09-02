@@ -110,7 +110,7 @@ function AppContent() {
     <>
       <div
         style={{
-          width: "100vw",
+          width: "100%",
           minHeight: "100vh",
           backgroundImage: isProfilePage ? `url(${profileBg})` : "none",
           backgroundRepeat: "no-repeat",
@@ -119,271 +119,274 @@ function AppContent() {
           backgroundAttachment: "fixed", // optional: scrolls with page
         }}
       >
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignupChoice />} />
-          <Route path="/signup/:role" element={<Signup />} />
-          <Route path="/verify-email" element={<VerifyEmail />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
+        {/* a container which limits content width and centers it */}
+        <div className="max-w-[1200px] mx-auto px-4">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignupChoice />} />
+            <Route path="/signup/:role" element={<Signup />} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
 
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin-dashboard"
-            element={
-              <PrivateRoute>
-                <AdminDashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/researchers"
-            element={
-              <PrivateRoute>
-                <AdminResearchers />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/freelancers"
-            element={
-              <PrivateRoute>
-                <AdminFreelancers />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <PrivateRoute>
+                  <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/researchers"
+              element={
+                <PrivateRoute>
+                  <AdminResearchers />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/freelancers"
+              element={
+                <PrivateRoute>
+                  <AdminFreelancers />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/researcher-dashboard"
-            element={
-              <PrivateRoute>
-                <ResearcherDashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/create-survey"
-            element={
-              <PrivateRoute>
-                <CreateSurvey />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/create-survey/:surveyId/questions"
-            element={
-              <PrivateRoute>
-                <CreateQuestions />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/create-demographic/:surveyId"
-            element={
-              <PrivateRoute>
-                <CreateDemographic />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/all-surveys"
-            element={
-              <PrivateRoute>
-                <AllSurveys />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/unpublished-surveys"
-            element={
-              <PrivateRoute>
-                <UnpublishedSurveys />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/survey/:id/display/"
-            element={
-              <PrivateRoute>
-                <SurveyForm />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/researcher-dashboard"
+              element={
+                <PrivateRoute>
+                  <ResearcherDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create-survey"
+              element={
+                <PrivateRoute>
+                  <CreateSurvey />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create-survey/:surveyId/questions"
+              element={
+                <PrivateRoute>
+                  <CreateQuestions />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/create-demographic/:surveyId"
+              element={
+                <PrivateRoute>
+                  <CreateDemographic />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/all-surveys"
+              element={
+                <PrivateRoute>
+                  <AllSurveys />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/unpublished-surveys"
+              element={
+                <PrivateRoute>
+                  <UnpublishedSurveys />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/survey/:id/display/"
+              element={
+                <PrivateRoute>
+                  <SurveyForm />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/survey/:id/responses/analysis/"
-            element={
-              <PrivateRoute>
-                <SurveyAnalysis />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/survey/:id/submissions/"
-            element={
-              <PrivateRoute>
-                <SurveySubmissions />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/survey/:id/responses/analysis/"
+              element={
+                <PrivateRoute>
+                  <SurveyAnalysis />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/survey/:id/submissions/"
+              element={
+                <PrivateRoute>
+                  <SurveySubmissions />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/freelancer-dashboard"
-            element={
-              <PrivateRoute>
-                <FreelancerDashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="survey/:id/edit/"
-            element={
-              <PrivateRoute>
-                <EditSurvey />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/edit-survey-questions/:id"
-            element={
-              <PrivateRoute>
-                <EditSurveyQuestions />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/surveys/solved"
-            element={
-              <PrivateRoute>
-                <SolvedSurveys />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/surveys/pending"
-            element={
-              <PrivateRoute>
-                <PendingSurveys />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/surveys/solved/:id"
-            element={
-              <PrivateRoute>
-                <SolvedSurveyForm />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/edit-survey-demographics/:id"
-            element={
-              <PrivateRoute>
-                <EditSurveyDemographics />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/survey/:surveyId/submission/:freelancerId"
-            element={
-              <PrivateRoute>
-                <ViewFreelancerSubmission />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/services/proofreading"
-            element={
-              <PrivateRoute>
-                <ProofreadingPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/services/data-analysis"
-            element={
-              <PrivateRoute>
-                <DataAnalysisPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/services/pls"
-            element={
-              <PrivateRoute>
-                <PLSAnalysisPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/services/publishing"
-            element={
-              <PrivateRoute>
-                <PublishingPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/services/special"
-            element={
-              <PrivateRoute>
-                <SpecialRequestPage />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/freelancer-dashboard"
+              element={
+                <PrivateRoute>
+                  <FreelancerDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="survey/:id/edit/"
+              element={
+                <PrivateRoute>
+                  <EditSurvey />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edit-survey-questions/:id"
+              element={
+                <PrivateRoute>
+                  <EditSurveyQuestions />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/surveys/solved"
+              element={
+                <PrivateRoute>
+                  <SolvedSurveys />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/surveys/pending"
+              element={
+                <PrivateRoute>
+                  <PendingSurveys />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/surveys/solved/:id"
+              element={
+                <PrivateRoute>
+                  <SolvedSurveyForm />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edit-survey-demographics/:id"
+              element={
+                <PrivateRoute>
+                  <EditSurveyDemographics />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/survey/:surveyId/submission/:freelancerId"
+              element={
+                <PrivateRoute>
+                  <ViewFreelancerSubmission />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/services/proofreading"
+              element={
+                <PrivateRoute>
+                  <ProofreadingPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/services/data-analysis"
+              element={
+                <PrivateRoute>
+                  <DataAnalysisPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/services/pls"
+              element={
+                <PrivateRoute>
+                  <PLSAnalysisPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/services/publishing"
+              element={
+                <PrivateRoute>
+                  <PublishingPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/services/special"
+              element={
+                <PrivateRoute>
+                  <SpecialRequestPage />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/admin/surveys"
-            element={
-              <PrivateRoute>
-                <ManageSurveysPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/settings/login-history"
-            element={
-              <PrivateRoute>
-                <AdminLoginHistory />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/settings/notifications"
-            element={
-              <PrivateRoute>
-                <AdminNotifications />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/settings/email-logs"
-            element={
-              <PrivateRoute>
-                <AdminEmailLogs />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-        {!hideFooter && <Footer />}
+            <Route
+              path="/admin/surveys"
+              element={
+                <PrivateRoute>
+                  <ManageSurveysPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/settings/login-history"
+              element={
+                <PrivateRoute>
+                  <AdminLoginHistory />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/settings/notifications"
+              element={
+                <PrivateRoute>
+                  <AdminNotifications />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/settings/email-logs"
+              element={
+                <PrivateRoute>
+                  <AdminEmailLogs />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+          {!hideFooter && <Footer />}
+        </div>
       </div>
     </>
   );
