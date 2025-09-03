@@ -20,6 +20,7 @@ import paymentImage from "../assets/Fair Compensation .jpg";
 import verifyImage from "../assets/Verified Participants.jpg";
 import responseImage from "../assets/One-Time Response Policy.jpg";
 import backgroundImage from "../assets/background.svg";
+import backgroundImage2 from "../assets/background.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
@@ -323,128 +324,182 @@ function AboutUs() {
       {/* why join survey ink */}
       <section
         data-aos="fade-up"
-        style={{
-          width: "1550px",
-          height: "auto",
-          margin: "0 auto",
-          backgroundColor: "#F4F4F4",
-          padding: "3rem 2rem",
-          borderRadius: "12px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          fontFamily: "Poppins, sans-serif",
-        }}
+        className="w-full max-w-[1550px] mx-auto bg-[#F4F4F4] py-12 px-6 flex flex-col items-center font-[Poppins]"
       >
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "flex-start",
-            position: "relative",
-            paddingLeft: "2rem", // مسافة من يسار الصفحة حسب الاتجاه
-            textAlign: "start",
-          }}
-        >
-          <div style={{ position: "relative" }}>
-            {/* Curvy color image overlay */}
-            <img
-              src={empoweringTextImage}
-              alt="Curvy Overlay"
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "50px",
-                height: "40px",
-                zIndex: 1,
-              }}
-            />
+        <Container>
+          {/* Title */}
+          <div className="w-full flex justify-center md:justify-start relative text-center md:text-start">
+            <div className="relative">
+              <img
+                src={empoweringTextImage}
+                alt="Curvy Overlay"
+                className="absolute top-0 left-0 w-[50px] h-[40px] z-10 hidden md:block"
+              />
+              <h2 className="text-[32px] font-bold text-[#23407F] leading-tight mb-2 relative z-20">
+                Why Join SurveyInk?
+              </h2>
+            </div>
+          </div>
 
-            {/* Heading text */}
-            <h2
-              style={{
-                fontSize: "32px",
-                fontWeight: "bold",
-                color: "#3699DD",
-                lineHeight: "1.2",
-                marginBottom: "0.5rem",
-                position: "relative",
-                zIndex: 2,
-                textAlign: "start",
-              }}
+          {/* Cards Container */}
+          <div
+            className="
+              grid 
+              grid-cols-1 
+              md:grid-cols-2 
+              lg:grid-cols-4 
+              gap-6 
+              lg:justify-between 
+              mt-12 
+              w-full
+              place-items-center
+            "
+          >
+            {/* Card 1 */}
+            <div
+              className="
+                rounded-xl 
+                flex flex-col 
+                relative h-[370px]
+                w-3/4 md:w-full 
+                bg-cover bg-center
+                overflow-hidden
+              "
+              style={{ backgroundImage: `url(${backgroundImage2})` }}
             >
-              Why Join SurveyInk?
-            </h2>
-          </div>
-        </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                }}
+              >
+                <img
+                  src={languageImage}
+                  alt="Survey Hosting"
+                  className="h-40 object-contain"
+                />
+              </div>
+              <div style={{ padding: "20px" }}>
+                <h3 className="text-[#FEA319] text-lg font-bold">
+                  Dual-Language Platform
+                </h3>
+                <p className="text-white text-sm leading-relaxed">
+                  Secure and reliable hosting for your surveys, ensuring data
+                  integrity and accessibility across the region.
+                </p>
+              </div>
+            </div>
 
-        {/* Cards Container */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "47px",
-          }}
-        >
-          {/* Card 1 */}
-          <div style={cardJoinStyle}>
-            <img
-              src={languageImage}
-              alt="Survey Hosting"
-              style={imageJoinStyle}
-            />
-            <h3 style={cardJoinTitleStyle}>Dual-Language Platform</h3>
-            <p style={cardJoinTextStyle}>
-              Secure and reliable hosting for your surveys, ensuring data
-              integrity and accessibility across the region.
-            </p>
-          </div>
+            {/* Card 2 */}
+            <div
+              className="
+                rounded-xl 
+                flex flex-col 
+                relative h-[370px]
+                w-3/4 md:w-full 
+                bg-cover bg-center
+                overflow-hidden
+              "
+              style={{ backgroundImage: `url(${backgroundImage2})` }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                }}
+              >
+                <img
+                  src={paymentImage}
+                  alt="Survey Hosting"
+                  className="h-40 object-contain"
+                />
+              </div>
+              <div style={{ padding: "20px" }}>
+                <h3 className="text-[#FEA319] text-lg font-bold pl-3 pb-3">
+                  Fair Compensation
+                </h3>
+                <p className="text-white text-sm leading-relaxed pl-3 pb-3">
+                  Comprehensive assistance with research paper development, from
+                  methodology to final presentation.
+                </p>
+              </div>
+            </div>
 
-          {/* Card 2 */}
-          <div style={cardJoinStyle}>
-            <img
-              src={paymentImage}
-              alt="Research Support"
-              style={imageJoinStyle}
-            />
-            <h3 style={cardJoinTitleStyle}>Fair Compensation </h3>
-            <p style={cardJoinTextStyle}>
-              Comprehensive assistance with research paper development, from
-              methodology to final presentation.
-            </p>
-          </div>
+            {/* Card 3 */}
+            <div
+              className="
+                rounded-xl 
+                flex flex-col 
+                relative h-[370px]
+                w-3/4 md:w-full 
+                bg-cover bg-center
+                overflow-hidden
+              "
+              style={{ backgroundImage: `url(${backgroundImage2})` }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                }}
+              >
+                <img
+                  src={verifyImage}
+                  alt="Survey Hosting"
+                  className="h-40 object-contain"
+                />
+              </div>
+              <div style={{ padding: "20px" }}>
+                <h3 className="text-[#FEA319] text-lg font-bold pl-3 pb-3">
+                  Verified Participants
+                </h3>
+                <p className="text-white text-sm leading-relaxed pl-3 pb-3">
+                  Expert statistical analysis to help you interpret your data
+                  and draw accurate conclusions.
+                </p>
+              </div>
+            </div>
 
-          {/* Card 3 */}
-          <div style={cardJoinStyle}>
-            <img
-              src={verifyImage}
-              alt="Statistical Analysis"
-              style={imageJoinStyle}
-            />
-            <h3 style={cardJoinTitleStyle}>Verified Participants</h3>
-            <p style={cardJoinTextStyle}>
-              Expert statistical analysis to help you interpret your data and
-              draw accurate conclusions.
-            </p>
+            {/* Card 4 */}
+            <div
+              className="
+                rounded-xl 
+                flex flex-col 
+                relative h-[370px]
+                w-3/4 md:w-full 
+                bg-cover bg-center
+                overflow-hidden
+              "
+              style={{ backgroundImage: `url(${backgroundImage2})` }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                }}
+              >
+                <img
+                  src={responseImage}
+                  alt="Survey Hosting"
+                  className="h-40 object-contain"
+                />
+              </div>
+              <div style={{ padding: "20px" }}>
+                <h3 className="text-[#FEA319] text-lg font-bold pl-3 pb-3">
+                  One-Time Response Policy
+                </h3>
+                <p className="text-white text-sm leading-relaxed pl-3 pb-3">
+                  Guidance through the academic publishing process, increasing
+                  your chances of success.
+                </p>
+              </div>
+            </div>
           </div>
-
-          {/* Card 4 */}
-          <div style={cardJoinStyle}>
-            <img
-              src={responseImage}
-              alt="Academic Publishing"
-              style={imageJoinStyle}
-            />
-            <h3 style={cardJoinTitleStyle}>One-Time Response Policy</h3>
-            <p style={cardJoinTextStyle}>
-              Guidance through the academic publishing process, increasing your
-              chances of success.
-            </p>
-          </div>
-        </div>
+        </Container>
       </section>
 
       {/* Hero Section */}
@@ -508,102 +563,5 @@ function AboutUs() {
     </main>
   );
 }
-
-const cardStyle = {
-  width: "300px",
-  backgroundColor: "#fff",
-  // padding: '1rem',
-  borderRadius: "12px",
-  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-};
-
-const imageStyle = {
-  width: "300px",
-  height: "160.722px",
-  objectFit: "cover",
-  borderRadius: "14px 14px 0 14px",
-  marginBottom: "10px",
-};
-
-const cardTitleStyle = {
-  color: "#3699DD",
-  fontSize: "16px",
-  fontWeight: "600",
-  fontStyle: "normal",
-  // marginBottom: '0.5rem',
-  fontFamily: "Poppins",
-  paddingLeft: "13.33px",
-  width: "230px",
-  height: "28px",
-};
-
-const cardTextStyle = {
-  color: "#000",
-  fontSize: "12px",
-  lineHeight: "1.5",
-  fontFamily: "Poppins",
-  paddingLeft: "13.33px",
-  width: "223.667px",
-};
-
-const bottomBarStyle = {
-  position: "absolute",
-  bottom: "0",
-  right: "0",
-  width: "35px",
-  height: "110px",
-  backgroundColor: "#23407F",
-};
-
-const cardJoinStyle = {
-  width: "280px",
-  // backgroundColor: '#fff',
-  backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  // padding: '1rem',
-  borderRadius: "12px",
-  // boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  height: "307px",
-};
-
-const imageJoinStyle = {
-  width: "273px",
-  height: "160.722px",
-  objectFit: "cover",
-  borderRadius: "14px 0px 0 14px",
-  marginBottom: "10px",
-};
-
-const cardJoinTitleStyle = {
-  color: "#FEA319",
-  fontSize: "18px",
-  fontWeight: "700",
-  fontStyle: "normal",
-  // marginBottom: '0.5rem',
-  fontFamily: "Poppins",
-  paddingLeft: "13.33px",
-  // width:'260px',
-  height: "23.075px",
-  paddingBottom: "13.33px",
-};
-
-const cardJoinTextStyle = {
-  color: "#fff",
-  fontSize: "12px",
-  lineHeight: "1.5",
-  fontFamily: "Poppins",
-  paddingLeft: "13.33px",
-  width: "247.925px",
-  paddingBottom: "13.33px",
-};
 
 export default AboutUs;
