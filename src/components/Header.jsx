@@ -12,8 +12,20 @@ function Header() {
 
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const profileMenuRef = useRef(null);
   const mobileMenuRef = useRef(null);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -93,7 +105,9 @@ function Header() {
   return (
     <Container>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 px-5 h-16 bg-white flex items-center justify-between ${
+        className={`${
+          isMobile ? "fixed px-5" : "relative"
+        } top-0 left-0 right-0 z-50 h-16 bg-white flex items-center justify-between ${
           isArabic ? "flex-row-reverse" : "flex-row"
         }`}
       >
