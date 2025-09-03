@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
 import AnalysisImage from "../assets/Intuitive Analytics picotgram.svg";
 import CustomizableImage from "../assets/Customizable Settings pict.svg";
@@ -28,18 +27,41 @@ function Home() {
   const { t, i18n } = useTranslation();
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
   const navigate = useNavigate();
-
   const containerRef = useRef(null);
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [maxIndex, setMaxIndex] = useState(0);
+
+  useEffect(() => {
+    const updateMaxIndex = () => {
+      if (!containerRef.current) return;
+      const container = containerRef.current;
+      const totalItems = container.children.length;
+      const containerWidth = container.offsetWidth;
+      const itemsPerView = window.innerWidth >= 1024 ? 2 : 1;
+      setMaxIndex(Math.max(totalItems - itemsPerView, 0));
+    };
+    updateMaxIndex();
+    window.addEventListener("resize", updateMaxIndex);
+    return () => {
+      window.removeEventListener("resize", updateMaxIndex);
+    };
+  }, []);
 
   const scrollToService = (index) => {
     if (containerRef.current) {
       const container = containerRef.current;
-      const serviceWidth = 447 + 32; // width + gap
-      container.scrollTo({
-        left: index * serviceWidth,
+      const item = container.children[0];
+      if (!item) return;
+
+      const gap = parseInt(getComputedStyle(container).gap || 32);
+      const itemWidth = item.offsetWidth + gap;
+
+      container.scrollBy({
+        left: (index - currentIndex) * itemWidth,
         behavior: "smooth",
       });
+
       setCurrentIndex(index);
     }
   };
@@ -50,12 +72,13 @@ function Home() {
   };
 
   const handleNext = () => {
-    const newIndex = Math.min(currentIndex + 1, 1); // Only 4 services, showing 3 at a time
+    const newIndex = Math.min(currentIndex + 1, maxIndex);
     scrollToService(newIndex);
   };
 
   return (
     <div className="home-page" style={{ direction }}>
+      {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
         {/* Background Video */}
         <video
@@ -162,340 +185,232 @@ function Home() {
       {/* Services Section */}
       <section
         style={{
-          padding: "4rem 2rem",
+          padding: "4rem 1rem",
           backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           marginTop: "50px",
           position: "relative",
-          "::before": {
-            content: '""',
+          direction: i18n.language === "ar" ? "rtl" : "ltr",
+        }}
+      >
+        <div
+          className="overlay"
+          style={{
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(255, 255, 255, 0.9)",
             zIndex: 0,
-          },
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1485px",
-            margin: "0 auto",
-            position: "relative",
-            zIndex: 1,
           }}
-        >
-          {/* Navigation Arrows */}
-          <button
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            style={{
-              position: "absolute",
-              left: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "#fff",
-              border: "1px solid #eaeaea",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: currentIndex === 0 ? "not-allowed" : "pointer",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-              zIndex: 10,
-              opacity: currentIndex === 0 ? 0.5 : 1,
-            }}
-          >
-            ←
-          </button>
-
-          <button
-            onClick={handleNext}
-            disabled={currentIndex === 1} // Only 2 possible positions with 4 items showing 3
-            style={{
-              position: "absolute",
-              right: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "#fff",
-              border: "1px solid #eaeaea",
-              borderRadius: "50%",
-              width: "40px",
-              height: "40px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: currentIndex === 1 ? "not-allowed" : "pointer",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-              zIndex: 10,
-              opacity: currentIndex === 1 ? 0.5 : 1,
-            }}
-          >
-            →
-          </button>
-
-          {/* Services Carousel */}
+        />
+        <Container>
           <div
             style={{
-              display: "flex",
-              overflow: "hidden",
-              position: "relative",
               maxWidth: "1485px",
+              margin: "0 auto",
+              position: "relative",
+              zIndex: 1,
             }}
           >
             <div
-              ref={containerRef}
               style={{
                 display: "flex",
-                gap: "2rem",
-                width: "100%",
-                scrollBehavior: "smooth",
-                padding: "0 1rem",
-                height: "396px",
+                justifyContent: "center",
+                gap: "1rem",
+                marginBottom: "1.5rem",
               }}
             >
-              {/* Service 1 */}
-              <div
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
                 style={{
-                  minWidth: "447px",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
+                  background: "#fff",
                   border: "1px solid #eaeaea",
-                  overflow: "hidden",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
                   display: "flex",
-                  flexDirection: "column",
-                  height: "396px",
-                  flexShrink: 0,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: currentIndex === 0 ? "not-allowed" : "pointer",
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                  opacity: currentIndex === 0 ? 0.5 : 1,
                 }}
               >
-                <div
-                  style={{
-                    height: "263px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#f8f9fa",
-                    width: "447px",
-                  }}
-                >
-                  <img
-                    src={StatisticalAnalysis}
-                    alt="Statistical Analysis"
-                    style={{
-                      width: "447px",
-                      height: "263px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "2rem",
-                    textAlign: "center",
-                    flex: 1,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "600",
-                      marginBottom: "1rem",
-                      color: "#1a1a2e",
-                    }}
-                  >
-                    Statistical Analysis
-                  </h3>
-                  <p
-                    style={{
-                      color: "#666",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Expert statistical analysis to help you interpret your data.
-                  </p>
-                </div>
-              </div>
+                {i18n.language === "ar" ? "→" : "←"}
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === maxIndex}
+                style={{
+                  background: "#fff",
+                  border: "1px solid #eaeaea",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: currentIndex === maxIndex ? "not-allowed" : "pointer",
+                  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                  opacity: currentIndex === maxIndex ? 0.5 : 1,
+                }}
+              >
+                {i18n.language === "ar" ? "←" : "→"}
+              </button>
+            </div>
 
-              {/* Service 2 */}
+            {/* Services Carousel */}
+            <div
+              style={{
+                overflow: "hidden",
+                position: "relative",
+                maxWidth: "1485px",
+              }}
+            >
               <div
+                ref={containerRef}
                 style={{
-                  minWidth: "447px",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  border: "1px solid #eaeaea",
-                  overflow: "hidden",
                   display: "flex",
-                  flexDirection: "column",
+                  gap: "2rem",
+                  width: "100%",
+                  scrollBehavior: "smooth",
                   height: "396px",
-                  flexShrink: 0,
+                  overflowX: "auto",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
                 }}
               >
+                {/*first*/}
                 <div
-                  style={{
-                    height: "263px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#f8f9fa",
-                    width: "447px",
-                  }}
+                  className="
+    flex-shrink-0 bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col
+    h-[396px]
+    w-full sm:w-full lg:w-1/2
+    max-w-[720px]
+  "
                 >
-                  <img
-                    src={Academic}
-                    alt="Academic Publishing"
-                    style={{
-                      width: "447px",
-                      height: "263px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "2rem",
-                    textAlign: "center",
-                    flex: 1,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "600",
-                      marginBottom: "1rem",
-                      color: "#1a1a2e",
-                    }}
+                  <div className="flex-2 w-full overflow-hidden">
+                    <img
+                      src={StatisticalAnalysis}
+                      alt={t("Statistical Analysis")}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`p-8 flex-1 ${
+                      i18n.language === "ar" ? "text-right" : "text-center"
+                    }`}
                   >
-                    Academic Publishing Help
-                  </h3>
-                  <p style={{ color: "#666", lineHeight: "1.6" }}>
-                    Guidance through the academic publishing process.
-                  </p>
+                    <h3 className="text-xl font-semibold mb-4 text-[#1a1a2e]">
+                      {t("Statistical Analysis")}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t(
+                        "Expert statistical analysis to help you interpret your data."
+                      )}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Service 3 */}
-              <div
-                style={{
-                  minWidth: "447px",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  border: "1px solid #eaeaea",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "396px",
-                  flexShrink: 0,
-                }}
-              >
+                {/*second */}
                 <div
-                  style={{
-                    height: "263px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#f8f9fa",
-                    width: "447px",
-                  }}
+                  className="
+    flex-shrink-0 bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col
+    h-[396px]
+    w-full sm:w-full lg:w-1/2
+    max-w-[720px]
+  "
                 >
-                  <img
-                    src={surveyHosting}
-                    alt="Survey Hosting"
-                    style={{
-                      width: "447px",
-                      height: "263px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "2rem",
-                    textAlign: "center",
-                    flex: 1,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "600",
-                      marginBottom: "1rem",
-                      color: "#1a1a2e",
-                    }}
+                  <div className="flex-2 w-full overflow-hidden">
+                    <img
+                      src={Academic}
+                      alt={t("Academic")}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`p-8 flex-1 ${
+                      i18n.language === "ar" ? "text-right" : "text-center"
+                    }`}
                   >
-                    Survey Hosting
-                  </h3>
-                  <p style={{ color: "#666", lineHeight: "1.6" }}>
-                    Secure and reliable hosting for your surveys.
-                  </p>
+                    <h3 className="text-xl font-semibold mb-4 text-[#1a1a2e]">
+                      {t("Academic Publishing Help")}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t("Guidance through the academic publishing process.")}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Service 4 */}
-              <div
-                style={{
-                  minWidth: "447px",
-                  backgroundColor: "#fff",
-                  borderRadius: "8px",
-                  border: "1px solid #eaeaea",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "396px",
-                  flexShrink: 0,
-                }}
-              >
+                {/*third*/}
                 <div
-                  style={{
-                    height: "263px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backgroundColor: "#f8f9fa",
-                    width: "447px",
-                  }}
+                  className="
+    flex-shrink-0 bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col
+    h-[396px]
+    w-full sm:w-full lg:w-1/2
+    max-w-[720px]
+  "
                 >
-                  <img
-                    src={Research}
-                    alt="Data Collection"
-                    style={{
-                      width: "447px",
-                      height: "263px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "2rem",
-                    textAlign: "center",
-                    flex: 1,
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "1.5rem",
-                      fontWeight: "600",
-                      marginBottom: "1rem",
-                      color: "#1a1a2e",
-                    }}
+                  <div className="flex-2 w-full overflow-hidden">
+                    <img
+                      src={surveyHosting}
+                      alt={t("surveyHosting")}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`p-8 flex-1 ${
+                      i18n.language === "ar" ? "text-right" : "text-center"
+                    }`}
                   >
-                    Data Collection
-                  </h3>
-                  <p style={{ color: "#666", lineHeight: "1.6" }}>
-                    High-quality data collection methods.
-                  </p>
+                    <h3 className="text-xl font-semibold mb-4 text-[#1a1a2e]">
+                      {t("Survey Hosting")}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t("Secure and reliable hosting for your surveys.")}
+                    </p>
+                  </div>
+                </div>
+
+                {/*fourth*/}
+                <div
+                  className="
+    flex-shrink-0 bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col
+    h-[396px]
+    w-full sm:w-full lg:w-1/2
+    max-w-[720px]
+  "
+                >
+                  <div className="flex-2 w-full overflow-hidden">
+                    <img
+                      src={Research}
+                      alt={t("Research")}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    className={`p-8 flex-1 ${
+                      i18n.language === "ar" ? "text-right" : "text-center"
+                    }`}
+                  >
+                    <h3 className="text-xl font-semibold mb-4 text-[#1a1a2e]">
+                      {t("Data Collection")}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {t("High-quality data collection methods.")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
+
       <section
         style={{
           marginTop: "80px",
