@@ -411,133 +411,54 @@ function Home() {
         </Container>
       </section>
 
-      <section
-        style={{
-          marginTop: "80px",
-          backgroundColor: "#ffffff",
-          padding: "40px 0",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1317px",
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* Left Side - Text and Buttons */}
-          <div style={{ flex: 1, minWidth: "300px", paddingRight: "20px" }}>
-            {/* <div style={{ position: 'relative', display: 'inline-block', paddingLeft: '8px' ,marginTop:'89px'}}></div> */}
-            <h2
-              style={{
-                fontSize: "35px",
-                fontFamily: "Poppins",
-                fontWeight: "600",
-                color: "#395692",
-                marginBottom: "20px",
-                textAlign: "left",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {/* الحرفين "Su" داخل span بخلفية صورة */}
-              <span
-                style={{
-                  display: "inline-block",
-                  position: "relative",
-                  width: "70px", // تقدر تعدل حسب حجم الحرف
-                  height: "45px",
-                  // marginRight: '5px',
-                }}
-              >
-                <img
-                  src={wordBg}
-                  alt=""
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "50px",
-                    height: "40px",
-                    zIndex: 1,
-                  }}
-                />
-                <span
-                  style={{
-                    position: "relative",
-                    zIndex: 1,
-                    display: "inline-block",
-                    width: "400px",
-                    height: "100%",
-                    textAlign: "center",
-                    lineHeight: "45px",
-                    color: "#395692",
-                  }}
-                >
-                  Supported Currencies
+      {/*Supported Currencies Section*/}
+      <Container>
+        <section className="mt-20 bg-white py-10">
+          <div className="max-w-[1317px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 px-4 text-center lg:text-left">
+            {/* Left Side - Text and Buttons */}
+            <div className="flex-1 min-w-[280px] flex flex-col items-center lg:items-start">
+              <h2 className="text-[35px] font-poppins font-semibold text-[#395692] mb-6 flex items-center justify-center lg:justify-start">
+                <span className="relative inline-block">
+                  <img
+                    src={wordBg}
+                    alt=""
+                    className="absolute top-0 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[50px] h-[40px] z-0"
+                  />
+                  <span className="relative z-10 text-[#395692] leading-[45px]">
+                    Supported Currencies
+                  </span>
                 </span>
-              </span>
-            </h2>
-            <span
-              style={{ color: "#000", fontWeight: "normal", fontSize: "16px" }}
-            >
-              We currently support transactions in
-              <br />
-            </span>
-            <span
-              style={{
-                color: "#F19303",
-                fontWeight: "normal",
-                fontSize: "18px",
-              }}
-            >
-              Egyptian Pound (EGP) & American Dollars (USD)
-            </span>
-            <div style={{ display: "flex", gap: "10px", marginTop: "24px" }}>
-              <button
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: "#007bff",
-                  color: "#FEA319",
-                  border: "none",
-                  borderRadius: "15px",
-                  width: "117px",
-                  height: "39px",
-                  cursor: "pointer",
-                  background:
-                    "linear-gradient(0deg, #395692 0%, #395692 100%), #F19303",
-                }}
-              >
-                More
-              </button>
-              <button
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: "transparent",
-                  color: "#3699DD",
-                  border: "1px solid #395692",
-                  borderRadius: "15px",
-                  cursor: "pointer",
-                }}
-              >
-                Contact Us
-              </button>
+              </h2>
+
+              <p className="text-black text-base mb-2">
+                We currently support transactions in
+              </p>
+              <p className="text-[#F19303] text-lg">
+                Egyptian Pound (EGP) & American Dollars (USD)
+              </p>
+
+              <div className="flex gap-4 mt-6 justify-center lg:justify-start">
+                <button className="px-6 py-2 rounded-[15px] w-[117px] h-[39px] bg-[#395692] text-[#FEA319] font-medium">
+                  More
+                </button>
+                <button className="px-6 py-2 rounded-[15px] border border-[#395692] text-[#3699DD] font-medium">
+                  Contact Us
+                </button>
+              </div>
+            </div>
+
+            {/* Right Side - Image */}
+            <div className="flex-1 min-w-[280px] text-center lg:text-right">
+              <img
+                src={dollarImage}
+                alt="Currency Support"
+                className="max-w-full h-auto mx-auto lg:mx-0"
+              />
             </div>
           </div>
+        </section>
+      </Container>
 
-          {/* Right Side - Image */}
-          <div style={{ flex: 1, minWidth: "300px", textAlign: "center" }}>
-            <img
-              src={dollarImage}
-              alt="Currency Support"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-          </div>
-        </div>
-      </section>
       <section
         style={{
           marginTop: "80px",
