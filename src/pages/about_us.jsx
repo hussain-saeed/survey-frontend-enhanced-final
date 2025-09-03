@@ -160,126 +160,38 @@ function AboutUs() {
         />
       </div>
 
-      {/* Third Section */}
-      <section
-        data-aos="fade-up"
-        style={{
-          width: "1440px",
-          height: "448px",
-          padding: "0",
-          display: "flex",
-          overflow: "hidden",
-        }}
-      >
-        {/* Left Half - background image with card inside */}
-        <div
-          style={{
-            width: "50%",
-            height: "100%",
-            backgroundImage: `url(${ourMission})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/* First Card */}
+      {/* Our Mission Section */}
+      <section data-aos="fade-up" className="bg-[#a7a7a72f] py-12">
+        <Container>
           <div
-            style={{
-              width: "560px",
-              height: "352px",
-              backgroundColor: "#F8F8F8",
-              boxShadow: "inset -1px 0 0 rgba(0,0,0,0.1)", // خط فاصل داخلي اختياري
-              padding: "1.5rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              fontFamily: "sans-serif",
-              borderTopRightRadius: "0",
-              borderBottomRightRadius: "0",
-              marginLeft: "160px",
-            }}
+            className="
+              flex flex-col lg:flex-row 
+              items-center
+              text-center lg:text-left 
+              lg:justify-between gap-8
+            "
           >
-            <div
-              style={{
-                position: "relative",
-                display: "inline-block",
-                paddingLeft: "8px",
-                marginTop: "48px",
-              }}
-            >
-              <img
-                src={empoweringTextImage}
-                alt="Curvy Overlay"
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  width: "50px",
-                  height: "40px",
-                  zIndex: 1,
-                }}
-              />
-              <h2
-                style={{
-                  fontSize: "32px",
-                  fontWeight: "bold",
-                  color: "#23407F",
-                  lineHeight: "1.2",
-                  marginBottom: "0.5rem",
-                  position: "relative",
-                  zIndex: 2,
-                }}
-              >
+            <div className="max-w-[560px]">
+              <h2 className="text-3xl lg:text-4xl font-bold text-[#23407F] mb-4">
                 Our Mission
               </h2>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "#6F6F6F",
-                  fontFamily: "Poppins",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  lineHeight: "1.6",
-                  width: "373px",
-                  height: "178px",
-                }}
-              >
+              <p className="text-[#6F6F6F] text-base leading-relaxed">
                 Our mission is to facilitate high-quality data collection,
                 academic collaboration, and freelance engagement through an
                 inclusive, secure, and user-friendly platform that serves the
-                needs of both researchers and independent professionals.{" "}
+                needs of both researchers and independent professionals.
               </p>
             </div>
-          </div>
-        </div>
 
-        {/* Right Half - Card with image (no gap between) */}
-        <div
-          style={{
-            width: "560px",
-            height: "352px",
-            boxShadow: "inset 1px 0 0 rgba(0,0,0,0.1)", // خط فاصل داخلي اختياري
-            backgroundColor: "#F8F8F8",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "0",
-            marginTop: "48px",
-          }}
-        >
-          <img
-            src={ourMissionImage}
-            alt="empowering Image"
-            style={{
-              maxWidth: "560px",
-              maxHeight: "352px",
-              objectFit: "cover",
-            }}
-          />
-        </div>
+            <div className="w-full max-w-[560px]">
+              <img
+                src={ourMissionImage}
+                alt="Our Mission"
+                className="w-full h-auto object-cover rounded-md"
+              />
+            </div>
+          </div>
+        </Container>
       </section>
 
       <section
