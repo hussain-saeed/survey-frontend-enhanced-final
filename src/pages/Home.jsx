@@ -459,129 +459,60 @@ function Home() {
         </section>
       </Container>
 
+      {/*Empowering section*/}
       <section
-        style={{
-          marginTop: "80px",
-          backgroundImage: `url(${empoweringBgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          // padding: '40px 0',
-        }}
+        className="mt-20 bg-cover bg-center relative overflow-hidden pt-9 pb-16"
+        style={{ backgroundImage: `url(${empoweringBgImage})` }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "stretch", // تمتد الصور بالنسبه لطول الcontainer
-            maxWidth: "1200px",
-            margin: "0 auto",
-          }}
-        >
-          {/* Left Side - Text and Curvy Image */}
-          <div
-            style={{
-              flex: 1,
-              paddingLeft: "8px",
-              marginTop: "70px",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <img
-              src={empoweringTextImage}
-              alt="Curvy Overlay"
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "50px",
-                height: "40px",
-                zIndex: 1,
-              }}
-            />
+        <Container>
+          <div className="max-w-[1200px] mx-auto relative z-10 flex flex-col lg:flex-row">
+            {/* Left Side - Text */}
+            <div
+              className="
+          flex-1 relative z-10 
+          flex flex-col 
+          items-center lg:items-start
+          text-center lg:text-left
+          
+        "
+            >
+              <img
+                src={empoweringTextImage}
+                alt="Curvy Overlay"
+                className="absolute top-0 left-0 w-[50px] h-[40px] z-0 hidden lg:block"
+              />
 
-            <p
-              style={{
-                fontSize: "35px",
-                fontWeight: "600",
-                color: "#23407F",
-                lineHeight: "1.2",
-                marginBottom: "0.5rem",
-                fontFamily: "Poppins",
-                position: "relative",
-                zIndex: 2,
-              }}
-            >
-              Empowering Research
-              <br />
-              in The Middle East
-            </p>
-            <span
-              style={{
-                maxWidth: "400px",
-                display: "block",
-                fontSize: "16px",
-                color: "#333",
-                lineHeight: "1.5",
-                fontFamily: "Poppins",
-              }}
-            >
-              Survey Ink empowers Middle East researchers with verified
-              participants, expert support, and bilingual tools for faster,
-              affordable insights. Freelancers gain flexible, meaningful work by
-              contributing to impactful academic, market, and thesis research
-              projects.
-            </span>
+              <p className="text-[28px] sm:text-[32px] lg:text-[35px] font-semibold text-[#23407F] leading-tight mb-4 font-poppins relative z-10">
+                Empowering Research
+                <br />
+                in The Middle East
+              </p>
+
+              <span className="block max-w-[500px] text-[15px] sm:text-[16px] text-[#333] leading-relaxed font-poppins">
+                Survey Ink empowers Middle East researchers with verified
+                participants, expert support, and bilingual tools for faster,
+                affordable insights. Freelancers gain flexible, meaningful work
+                by contributing to impactful academic, market, and thesis
+                research projects.
+              </span>
+
+              {/* Button */}
+              <button
+                className="mt-6 bg-[#F19303] text-white w-[120px] h-[38px] rounded-full font-semibold text-[16px] shadow-md font-poppins hover:scale-105 transition-transform"
+                onClick={() => navigate("/signup")}
+              >
+                JOIN US
+              </button>
+            </div>
           </div>
 
-          {/* Right Side - Full Height Image with 3D Style */}
-          {/* <div style={{
-      flex: 1,
-      position: 'relative',
-      display: 'flex',
-      left:'9.6rem',
-      // alignItems: 'stretch',
-      // justifyContent: 'flex-end',
-      width:"956px"
-    }}>
-      <img 
-        src={empoweringImage} 
-        alt="Empowering Illustration" 
-        style={{
-          width: '100%',
-          height: '457px',
-          objectFit: 'cover',
-        }} 
-      />
-    </div> */}
-        </div>
-        <div className="join-section">
-          <button
-            className="join-btn"
-            style={{
-              backgroundColor: "#F19303",
-              color: "#FEFEFF",
-              border: "none",
-              width: "120px",
-              height: "38px",
-              // padding: '12px 24px',
-              borderRadius: "40px",
-              fontWeight: "600",
-              fontSize: "16px",
-              cursor: "pointer",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-              marginBottom: "90px",
-              marginTop: "10px",
-              marginLeft: "165px",
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              textAlign: "center",
-            }}
-            onClick={() => navigate("/signup")}
-          >
-            JOIN US
-          </button>
-        </div>
+          {/* Right Side - Absolute Image (only on lg and above) */}
+          <img
+            src={empoweringImage}
+            alt="Empowering Illustration"
+            className="hidden lg:block absolute bottom-0 right-5 w-[45%] object-contain"
+          />
+        </Container>
       </section>
 
       {/* <section
@@ -742,57 +673,20 @@ function Home() {
       </div>
       </section> */}
 
-      <section
-        style={{
-          marginTop: "80px",
-          backgroundColor: "#ffffff",
-          textAlign: "center",
-          height: "250px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1317px",
-            marginLeft: "61.5px",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "33px",
-              fontWeight: "600",
-              color: "#395692",
-              lineHeight: "1.4",
-              maxWidth: "900px",
-              marginBottom: "20px",
-              marginLeft: "15rem",
-              marginTop: "10rem",
-            }}
-          >
-            So, what are you waiting for? Get your exclusive services in one
-            hand
-          </h2>
+      <Container>
+        <section className=" bg-white text-center py-16 px-4">
+          <div className="max-w-[900px] mx-auto">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[33px] font-semibold text-[#395692] leading-snug mb-6">
+              So, what are you waiting for? Get your exclusive services in one
+              hand
+            </h2>
 
-          <button
-            style={{
-              backgroundColor: "#395692",
-              color: "#FEFEFF",
-              border: "none",
-              width: "120px",
-              height: "38px",
-              borderRadius: "40px",
-              fontWeight: "600",
-              fontSize: "16px",
-              cursor: "pointer",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              textAlign: "center",
-            }}
-          >
-            Get Started
-          </button>
-        </div>
-      </section>
+            <button className="bg-[#395692] text-white w-[120px] h-[38px] rounded-full font-semibold text-[16px] shadow-md font-poppins hover:scale-105 transition-transform">
+              Get Started
+            </button>
+          </div>
+        </section>
+      </Container>
     </div>
   );
 }
