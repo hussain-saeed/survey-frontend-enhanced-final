@@ -196,102 +196,128 @@ function AboutUs() {
 
       <section
         data-aos="fade-up"
+        className="max-w-[1550px] mx-auto bg-cover bg-center py-12 px-6 flex flex-col items-center font-[Poppins]"
         style={{
-          width: "1550px",
-          height: "auto",
-          margin: "0 auto",
           backgroundImage: `url(${sectioBackground})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          padding: "3rem 2rem",
-          borderRadius: "12px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          fontFamily: "Poppins, sans-serif",
         }}
       >
-        {/* Title */}
-        <h2
-          style={{
-            fontSize: "35px",
-            fontWeight: "600",
-            color: "#23407F",
-            padding: "0.5rem 1.5rem",
-            marginBottom: "2rem",
-            fontStyle: "normal",
-            lineHeight: "42px",
-          }}
-        >
-          What We Offer
-        </h2>
+        <Container>
+          {/* Title */}
+          <h2 className="text-[35px] font-semibold text-[#23407F] leading-[42px] mb-8 text-center">
+            What We Offer
+          </h2>
 
-        {/* Cards Container */}
-        <div
-          style={{
-            display: "flex",
-            gap: "1.5rem",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "47px",
-          }}
-        >
-          {/* Card 1 */}
-          <div style={cardStyle}>
-            <img src={surveyImage} alt="Survey Hosting" style={imageStyle} />
-            <h3 style={cardTitleStyle}>Survey Hosting</h3>
-            <p style={cardTextStyle}>
-              Secure and reliable hosting for your surveys, ensuring data
-              integrity and accessibility across the region.
-            </p>
-            <div style={bottomBarStyle}></div>
-          </div>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 w-full justify-items-center">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-[400px] flex flex-col items-start">
+              <img
+                src={surveyImage}
+                alt="Survey Hosting"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingLeft: "20px",
+                }}
+              >
+                <div style={{ width: "75%", paddingBottom: "30px" }}>
+                  <h3 className="text-xl font-semibold text-[rgb(54,153,221)] mt-4 mb-2">
+                    Survey Hosting
+                  </h3>
+                  <p className="text-[#555] text-sm leading-relaxed">
+                    Secure and reliable hosting for your surveys, ensuring data
+                    integrity and accessibility across the region.
+                  </p>
+                </div>
+                <div className="w-8 bg-[#23407F]"></div>
+              </div>
+            </div>
 
-          {/* Card 2 */}
-          <div style={cardStyle}>
-            <img
-              src={researchSupportImage}
-              alt="Research Support"
-              style={imageStyle}
-            />
-            <h3 style={cardTitleStyle}>Research Paper Support</h3>
-            <p style={cardTextStyle}>
-              Comprehensive assistance with research paper development, from
-              methodology to final presentation.
-            </p>
-            <div style={bottomBarStyle}></div>
-          </div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-[400px] flex flex-col items-start">
+              <img
+                src={researchSupportImage}
+                alt="Research Support"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingLeft: "20px",
+                }}
+              >
+                <div style={{ width: "75%", paddingBottom: "30px" }}>
+                  <h3 className="text-xl font-semibold text-[rgb(54,153,221)] mt-4 mb-2">
+                    Research Paper Support
+                  </h3>
+                  <p className="text-[#555] text-sm leading-relaxed">
+                    Comprehensive assistance with research paper development,
+                    from methodology to final presentation.
+                  </p>
+                </div>
+                <div className="w-8 bg-[#23407F]"></div>
+              </div>
+            </div>
 
-          {/* Card 3 */}
-          <div style={cardStyle}>
-            <img
-              src={statisticalImage}
-              alt="Statistical Analysis"
-              style={imageStyle}
-            />
-            <h3 style={cardTitleStyle}>Statistical Analysis</h3>
-            <p style={cardTextStyle}>
-              Expert statistical analysis to help you interpret your data and
-              draw accurate conclusions.
-            </p>
-            <div style={bottomBarStyle}></div>
-          </div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-[400px] flex flex-col items-start">
+              <img
+                src={statisticalImage}
+                alt="Statistical Analysis"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingLeft: "20px",
+                }}
+              >
+                <div style={{ width: "75%", paddingBottom: "30px" }}>
+                  <h3 className="text-xl font-semibold text-[rgb(54,153,221)] mt-4 mb-2">
+                    Statistical Analysis
+                  </h3>
+                  <p className="text-[#555] text-sm leading-relaxed">
+                    Expert statistical analysis to help you interpret your data
+                    and draw accurate conclusions.
+                  </p>
+                </div>
+                <div className="w-8 bg-[#23407F]"></div>
+              </div>
+            </div>
 
-          {/* Card 4 */}
-          <div style={cardStyle}>
-            <img
-              src={academicImage}
-              alt="Academic Publishing"
-              style={imageStyle}
-            />
-            <h3 style={cardTitleStyle}>Academic Publishing Help</h3>
-            <p style={cardTextStyle}>
-              Guidance through the academic publishing process, increasing your
-              chances of success.
-            </p>
-            <div style={bottomBarStyle}></div>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-[400px] flex flex-col items-start">
+              <img
+                src={academicImage}
+                alt="Academic Publishing"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  paddingLeft: "20px",
+                }}
+              >
+                <div style={{ width: "75%", paddingBottom: "30px" }}>
+                  <h3 className="text-xl font-semibold text-[rgb(54,153,221)] mt-4 mb-2">
+                    Academic Publishing Help
+                  </h3>
+                  <p className="text-[#555] text-sm leading-relaxed">
+                    Guidance through the academic publishing process, increasing
+                    your chances of success.
+                  </p>
+                </div>
+                <div className="w-8 bg-[#23407F]"></div>
+              </div>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* why join survey ink */}
