@@ -25,6 +25,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
 import Container from "../components/Container";
+import GetStarted from "../components/GetStarted";
 
 function AboutUs() {
   const { t } = useTranslation();
@@ -83,7 +84,7 @@ function AboutUs() {
             lg:absolute 
             lg:left-1/2 
             lg:-translate-x-1/2
-            lg:top-[450px]
+            lg:top-[500px]
           "
         >
           <div
@@ -502,64 +503,7 @@ function AboutUs() {
         </Container>
       </section>
 
-      {/* Hero Section */}
-      <section
-        data-aos="fade-up"
-        style={{
-          width: "1550px",
-          height: "448px",
-          margin: "0 auto",
-          backgroundColor: "#FFFFFF",
-          padding: "2rem",
-          borderRadius: "12px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <h2
-            style={{
-              fontSize: "33px",
-              fontWeight: "600",
-              color: "#395692",
-              lineHeight: "1.4",
-              maxWidth: "900px",
-              marginBottom: "20px",
-            }}
-          >
-            So, what are you waiting for? Get your exclusive services in one
-            hand
-          </h2>
-
-          <button
-            style={{
-              backgroundColor: "#395692",
-              color: "#FEFEFF",
-              border: "none",
-              width: "120px",
-              height: "38px",
-              borderRadius: "40px",
-              fontWeight: "600",
-              fontSize: "16px",
-              cursor: "pointer",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              textAlign: "center",
-            }}
-          >
-            Get Started
-          </button>
-        </div>
-      </section>
+      <GetStarted />
     </main>
   );
 }
