@@ -23,6 +23,7 @@ import dollarImage from "../assets/DollarImage.png";
 import empoweringBgImage from "../assets/B.G.svg";
 import empoweringImage from "../assets/empoweringHome.png";
 import "./css/Home.css";
+import Container from "../components/Container";
 function Home() {
   const { t, i18n } = useTranslation();
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
@@ -55,155 +56,108 @@ function Home() {
 
   return (
     <div className="home-page" style={{ direction }}>
-      <section
-        style={{ position: "relative", height: "100vh", overflow: "hidden" }}
-      >
+      <section className="relative h-screen overflow-hidden">
         {/* Background Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: -1,
-          }}
+          className="absolute top-0 left-0 w-full h-full object-cover -z-10"
         >
           <source src={HeroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         {/* Content Overlay */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            color: "#fff",
-            padding: "6rem 2rem",
-            textAlign: "left",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "left",
-            justifyContent: "center",
-          }}
-        >
-          <div style={{ maxWidth: "704px" }}>
-            <p
-              style={{
-                fontSize: "1.25rem",
-                maxWidth: "800px",
-                margin: "0 auto 2rem",
-                opacity: "0.95",
-              }}
-            >
-              {t("Welcome to surveyInk")}
-            </p>
-            <p
-              style={{
-                fontSize: "60px",
-                fontWeight: "600",
-                fontStyle: "normal",
-                marginBottom: "1.5rem",
-                lineHeight: "72px",
-                textAlign: "left",
-                color: "#6CAEDB",
-              }}
-            >
-              {t("Connecting Minds, One Survey At A Time")}
-            </p>
+        <Container className="h-full" style={{ direction }}>
+          <div className="relative z-10 text-white h-full flex flex-col justify-center">
+            <div className="max-w-[704px]">
+              <p className="text-xl max-w-[800px] mb-8 opacity-95 text-start">
+                {t("Welcome to surveyInk")}
+              </p>
 
-            <div
-              style={{ display: "flex", gap: "1rem", justifyContent: "left" }}
-            >
-              <a
-                href="/signup"
-                style={{
-                  padding: "0.5rem 1.2rem",
-                  width: "138.218px",
-                  height: "44px",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  borderRadius: "40px",
-                  backgroundColor: "#F19303",
-                  color: "#fff",
-                  textDecoration: "none",
-                }}
-              >
-                {t("Get_Started") || "Get Started"}
-              </a>
+              <p className="text-[60px] font-semibold mb-6 leading-[72px] text-start text-[#6CAEDB]">
+                {t("Connecting Minds, One Survey At A Time")}
+              </p>
+
+              <div className="flex gap-4 justify-start">
+                <a
+                  href="/signup"
+                  className="px-5 py-2 w-[138px] h-11 text-base font-semibold rounded-full bg-[#F19303] text-white text-center flex items-center justify-center"
+                >
+                  {t("Get_Started") || "Get Started"}
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Features Section */}
-      <section className="mt-20 bg-white text-center">
-        <div className="max-w-[1317px] mx-auto px-4">
-          <p className="text-[#F19303] text-[19px] font-normal font-poppins mb-2">
-            {t("where data meets innovation.")}
-          </p>
+      <Container>
+        <section className="mt-20 bg-white text-center">
+          <div className="max-w-[1317px] mx-auto px-4">
+            <p className="text-[#F19303] text-[19px] font-normal font-poppins mb-2">
+              {t("where data meets innovation.")}
+            </p>
 
-          <h2 className="text-[33px] font-semibold font-poppins text-black mb-10 leading-[1.3]">
-            {t("A Dashboard Designed for Clarity")}
-          </h2>
+            <h2 className="text-[33px] font-semibold font-poppins text-black mb-10 leading-[1.3]">
+              {t("A Dashboard Designed for Clarity")}
+            </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
-            <div className="flex flex-col items-center p-6">
-              <div className="w-[75px] h-[75px] flex items-center justify-center mb-5">
-                <img
-                  src={AnalysisImage}
-                  alt="Analytics icon"
-                  className="w-[60px] h-[60px]"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+              <div className="flex flex-col items-center p-6">
+                <div className="w-[75px] h-[75px] flex items-center justify-center mb-5">
+                  <img
+                    src={AnalysisImage}
+                    alt="Analytics icon"
+                    className="w-[60px] h-[60px]"
+                  />
+                </div>
+                <h3 className="text-[28px] font-semibold text-black mb-3">
+                  {t("Intuitive Analytics")}
+                </h3>
+                <p className="text-[16px] font-normal text-black leading-6">
+                  {t("Gain instant insights with charts and reports.")}
+                </p>
               </div>
-              <h3 className="text-[28px] font-semibold text-black mb-3">
-                {t("Intuitive Analytics")}
-              </h3>
-              <p className="text-[16px] font-normal text-black leading-6">
-                {t("Gain instant insights with charts and reports.")}
-              </p>
-            </div>
 
-            <div className="flex flex-col items-center p-6">
-              <div className="w-[75px] h-[75px] flex items-center justify-center mb-5">
-                <img
-                  src={SeamlessImage}
-                  alt="Management icon"
-                  className="w-[75px] h-[75px]"
-                />
+              <div className="flex flex-col items-center p-6">
+                <div className="w-[75px] h-[75px] flex items-center justify-center mb-5">
+                  <img
+                    src={SeamlessImage}
+                    alt="Management icon"
+                    className="w-[75px] h-[75px]"
+                  />
+                </div>
+                <h3 className="text-[28px] font-semibold text-black mb-3">
+                  Seamless Management
+                </h3>
+                <p className="text-[16px] font-normal text-black leading-6">
+                  Effortlessly manage your survey respondents.
+                </p>
               </div>
-              <h3 className="text-[28px] font-semibold text-black mb-3">
-                Seamless Management
-              </h3>
-              <p className="text-[16px] font-normal text-black leading-6">
-                Effortlessly manage your survey respondents.
-              </p>
-            </div>
 
-            <div className="flex flex-col items-center p-6">
-              <div className="w-[86px] h-[86px] flex items-center justify-center mb-5">
-                <img
-                  src={CustomizableImage}
-                  alt="Settings icon"
-                  className="w-[86px] h-[86px]"
-                />
+              <div className="flex flex-col items-center p-6">
+                <div className="w-[86px] h-[86px] flex items-center justify-center mb-5">
+                  <img
+                    src={CustomizableImage}
+                    alt="Settings icon"
+                    className="w-[86px] h-[86px]"
+                  />
+                </div>
+                <h3 className="text-[28px] font-semibold text-black mb-3">
+                  Customizable Settings
+                </h3>
+                <p className="text-[16px] font-normal text-black leading-6">
+                  Tailor your dashboard to fit your needs.
+                </p>
               </div>
-              <h3 className="text-[28px] font-semibold text-black mb-3">
-                Customizable Settings
-              </h3>
-              <p className="text-[16px] font-normal text-black leading-6">
-                Tailor your dashboard to fit your needs.
-              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </Container>
 
       {/* Services Section */}
       <section
