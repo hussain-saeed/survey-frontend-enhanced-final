@@ -347,7 +347,6 @@ const Signup = () => {
           </form>
         </div>
 
-        {/* إضافة أنماط CSS مدمجة */}
         <style>
           {`
             @media (max-width: 991.98px) {
@@ -383,7 +382,6 @@ const Signup = () => {
               max-width: 100%;
             }
             
-            /* تحسينات للشاشات الصغيرة جدًا */
             @media (max-width: 576px) {
               .form-container {
                 padding: 1rem 0.5rem;
@@ -394,7 +392,6 @@ const Signup = () => {
               }
             }
             
-            /* ضمان أن جميع الحقول تتكيف مع الحاوية */
             .form-grid > div,
             .floating-input-container,
             .floating-select-container {
@@ -402,7 +399,6 @@ const Signup = () => {
               max-width: 100%;
             }
             
-            /* تحسينات للتاريخ input */
             .date-input-container {
               width: 100%;
             }
@@ -412,7 +408,6 @@ const Signup = () => {
               margin-left: 0 !important;
             }
             
-            /* تحسينات للأيقونات في الوضع RTL */
             [dir="rtl"] .floating-input-container .input-icon {
               margin-right: 0;
               margin-left: 0.75rem;
