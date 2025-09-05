@@ -35,7 +35,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("https://survey-ink.com/api/login/", {
+      const response = await fetch("http://127.0.0.1:8000/api/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,11 +45,13 @@ function Login() {
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (!response.ok) {
         // Display the error message from the backend if available
         const errorMessage = data.detail || data.error || "Login failed";
         throw new Error(errorMessage);
+        console.log(errorMessage);
       }
 
       const { access, refresh, user } = data;
