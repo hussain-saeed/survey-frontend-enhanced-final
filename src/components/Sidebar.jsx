@@ -14,6 +14,7 @@ const Sidebar = ({
   profileOpen,
   setProfileOpen,
   isMobile,
+  isCreateSurvey,
 }) => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
@@ -110,7 +111,7 @@ const Sidebar = ({
         width: isMobile ? "260px" : "300px",
         backgroundColor: "#d5e2f7",
         color: "#000",
-        height: "100vh",
+        height: isMobile ? "100vh" : "100%",
         padding: "1rem",
         position: isMobile ? "fixed" : "relative",
         top: 0,
@@ -126,7 +127,6 @@ const Sidebar = ({
         boxShadow: isMobile ? "2px 0 10px rgba(0,0,0,0.2)" : "none",
       }}
     >
-
       <Link
         to="/researcher-dashboard"
         style={{ textDecoration: "none" }}
