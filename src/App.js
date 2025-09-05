@@ -33,6 +33,7 @@ import ViewFreelancerSubmission from "./pages/Survey/ViewFreelancerSubmission";
 import EditSurveyDemographics from "./pages/Survey/EditSurveyDemographics";
 import { useTranslation } from "react-i18next";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import UnpublishedSurveys from "./pages/Researcher/UnpublishedSurveys";
 import TermsAndConditions from "./pages/ContactAndTerms/TermsAndCondition";
 import PrivacyPolicy from "./pages/ContactAndTerms/PrivacyAndPoliciy";

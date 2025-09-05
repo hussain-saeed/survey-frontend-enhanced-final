@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import FloatingInput from "../components/FloatingInput";
 import FloatingSelect from "../components/FloatingSelect";
 import Container from "../components/Container";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const { t, i18n } = useTranslation();
@@ -51,26 +52,39 @@ const Signup = () => {
       try {
         const [countries, fields, professions, universities] =
           await Promise.all([
-            fetch("https://survey-ink.com/api/countries/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/countries/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/fields_of_study/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/fields_of_study/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/professions/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/professions/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/universities/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/universities/").then((res) =>
               res.json()
             ),
           ]);
-        setOptions({
+
+        const normalized = {
           countries: countries.results || countries,
           fieldsOfStudy: fields.results || fields,
           professions: professions.results || professions,
           universities: universities.results || universities,
           cities: [],
-        });
+        };
+
+        setOptions(normalized);
+
+        setFormData((prev) => ({
+          ...prev,
+          Gender: prev.Gender || "M",
+          Country: prev.Country || (normalized.countries[0]?.id ?? ""),
+          Field_of_study:
+            prev.Field_of_study || (normalized.fieldsOfStudy[0]?.id ?? ""),
+          Profession: prev.Profession || (normalized.professions[0]?.id ?? ""),
+          University: prev.University || (normalized.universities[0]?.id ?? ""),
+        }));
       } catch (err) {
         console.error("Fetch error:", err);
       }
@@ -84,15 +98,24 @@ const Signup = () => {
     const payload = { ...formData, role };
 
     try {
-      const res = await fetch(`https://survey-ink.com/api/signup/${role}/`, {
+      const res = await fetch(`http://127.0.0.1:8000/api/signup/${role}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       const data = await res.json();
-      if (res.ok) navigate("/login");
-      else alert(data.message || t("signup_failed"));
+
+      if (res.ok) {
+        toast.success(data.message);
+        navigate("/login");
+      } else {
+        toast.error(
+          data.message ||
+            data.error.substring(0, 70) + " ..." ||
+            t("signup_failed")
+        );
+      }
     } catch {
       alert(t("signup_failed"));
     } finally {
