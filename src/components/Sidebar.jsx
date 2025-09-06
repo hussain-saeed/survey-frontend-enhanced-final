@@ -123,7 +123,6 @@ const Sidebar = ({
         zIndex: 1100,
         overflow: "auto",
         fontFamily: "Poppins",
-
         boxShadow: isMobile ? "2px 0 10px rgba(0,0,0,0.2)" : "none",
       }}
     >
