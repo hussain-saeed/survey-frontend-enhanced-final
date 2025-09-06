@@ -1,4 +1,3 @@
-// src/components/FreelancerSidebar.js
 import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import logo from "../assets/logo3.png";
@@ -27,7 +26,6 @@ function FreelancerSidebar({
   const [servicesOpen, setServicesOpen] = useState(false);
   const [userInfo, setUserInfo] = useState({ username: "", image: "" });
 
-  // Open "Services" dropdown if path matches "/services"
   useEffect(() => {
     if (location.pathname.startsWith("/services")) {
       setServicesOpen(true);
@@ -206,7 +204,7 @@ function FreelancerSidebar({
           gap: "1rem",
           marginBottom: "2rem",
           padding: "0.5rem",
-          border: "2px solid #395692", // light gray solid border
+          border: "2px solid #395692",
           borderRadius: "15px",
           width: "240px",
         }}
