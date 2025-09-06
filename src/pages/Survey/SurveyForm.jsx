@@ -25,6 +25,15 @@ function SurveyForm() {
 
   const [hoverBtn, setHoverBtn] = useState({ back: false, submit: false });
 
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const fetchDropdowns = async (token) => {
     const endpoints = [
       ["countries", setCountries],
@@ -37,7 +46,7 @@ function SurveyForm() {
       endpoints.map(async ([endpoint, setter]) => {
         try {
           const res = await axios.get(
-            `http://127.0.0.1:8000/api/${endpoint}/`,
+            `http://localhost:8000/api/${endpoint}/`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -55,15 +64,13 @@ function SurveyForm() {
       try {
         const token = localStorage.getItem("access");
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/surveys/${id}/display/`,
+          `http://localhost:8000/surveys/${id}/display/`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(res.data.user_role);
         setUserRole(res.data.user_role);
         setSurvey(res.data);
-        console.log(userRole);
         setIsRTL(res.data.language === "ar");
         await fetchDropdowns(token);
       } catch (err) {
@@ -98,7 +105,6 @@ function SurveyForm() {
   }, [step, survey]);
 
   const demographicFields = survey?.demographic || {};
-  console.log(demographicFields);
   const handleDemographicsChange = (field, value) => {
     setDemographics((prev) => ({ ...prev, [field]: value }));
   };
@@ -124,7 +130,7 @@ function SurveyForm() {
     try {
       const token = localStorage.getItem("access");
       await axios.post(
-        `http://127.0.0.1:8000/api/surveys/${id}/submit/`,
+        `http://localhost:8000/surveys/${id}/submit/`,
         {
           demographics,
           answers,
@@ -169,8 +175,9 @@ function SurveyForm() {
           backgroundColor: "#A3B6DED4",
           borderRadius: 12,
           padding: "2rem",
-          margin: "0 auto",
-          color: "white",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: isSmallScreen ? "65px" : "0",
         }}
       >
         {step === 2 && timeLeft !== null && (
@@ -179,8 +186,14 @@ function SurveyForm() {
           </div>
         )}
 
-        <h2 style={{ color: "#35508C" }}>{survey.title}</h2>
-        <p style={{ color: "#35508C" }}>{survey.description}</p>
+        <h2 style={{ color: "#35508C", marginBottom: "5px" }}>
+          {"Title: "}
+          {survey.title}
+        </h2>
+        <p style={{ color: "#35508C", marginBottom: "8px" }}>
+          {"Description: "}
+          {survey.description}
+        </p>
 
         {step === 1 ? (
           <form onSubmit={handleDemographicsNext}>
@@ -432,7 +445,7 @@ function SurveyForm() {
               </div>
             ))}
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
               <button
                 type="button"
                 onClick={() => setStep(1)}
