@@ -151,8 +151,8 @@ function AllSurveys({ isRTL }) {
             setSidebarOpen(!sidebarOpen);
           }}
           style={{
-            position: "absolute",
-            top: "-15px",
+            position: "fixed",
+            top: "13px",
             left: isRTL ? "auto" : "90px",
             right: isRTL ? "90px" : "auto",
             zIndex: 1200,
@@ -257,11 +257,11 @@ function AllSurveys({ isRTL }) {
         {/* Surveys Table */}
         <div
           style={{
-            overflowX: "auto",
+            overflowX: "hidden",
             backgroundColor: "#395692",
             borderRadius: "12px",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-            padding: "1rem",
+            padding: isMobile ? "1rem 1rem 1rem 0.4rem" : "1rem",
             maxWidth: "1200px",
           }}
         >
