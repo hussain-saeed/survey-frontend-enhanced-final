@@ -427,7 +427,12 @@ function Home() {
                   <img
                     src={wordBg}
                     alt=""
-                    className="absolute top-0 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-[50px] h-[40px] z-0"
+                    className="absolute sm:top-0 hidden sm:block sm:left-0 sm:translate-x-0 w-[50px] h-[40px] z-0"
+                    style={{
+                      transform:
+                        direction === "rtl" ? "rotate(90deg)" : "rotate(0)",
+                      right: direction === "rtl" ? "0" : "unset",
+                    }}
                   />
                   <span className="relative z-10 text-[#395692] leading-[45px]">
                     Supported Currencies
