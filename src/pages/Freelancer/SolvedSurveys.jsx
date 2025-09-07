@@ -171,8 +171,7 @@ const SolvedSurveys = () => {
           minHeight: "100vh",
           boxSizing: "border-box",
           marginTop: isMobile ? "80px" : "0",
-          marginLeft: !isMobile && sidebarVisible && !isRTL ? "300px" : "0",
-          marginRight: !isMobile && sidebarVisible && isRTL ? "300px" : "0",
+          marginLeft: !isMobile && sidebarVisible && !isRTL ? "35px" : "0",
           transition: "margin 0.3s ease, filter 0.3s ease",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
         }}
@@ -191,13 +190,13 @@ const SolvedSurveys = () => {
         ) : (
           <div
             style={{
-              overflowX: "auto",
+              overflowX: "hidden",
               backgroundColor: "#395692",
               borderRadius: "12px",
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
-              padding: "1rem",
+              padding: "1rem 1rem 1rem 1rem",
               maxWidth: "1000px",
-              margin: "36px auto",
+              marginTop: "58px",
             }}
           >
             <table
@@ -228,11 +227,34 @@ const SolvedSurveys = () => {
                         transition: "background-color 0.3s ease",
                       }}
                     >
-                      <td style={cellStyle}>{s.survey_title}</td>
-                      <td style={cellStyle}>
+                      <td
+                        style={{
+                          color: "#fff",
+                          fontSize: "1rem",
+                          textAlign: "center",
+                          padding: isMobile ? "2.2rem 0" : "2.2rem",
+                        }}
+                      >
+                        {s.survey_title}
+                      </td>
+                      <td
+                        style={{
+                          padding: isMobile ? "2.2rem 2rem" : "2.2rem",
+                          color: "#fff",
+                          fontSize: "1rem",
+                          textAlign: "center",
+                        }}
+                      >
                         {new Date(s.submitted_at).toLocaleString()}
                       </td>
-                      <td style={cellStyle}>
+                      <td
+                        style={{
+                          padding: isMobile ? "2.2rem 0" : "2.2rem",
+                          color: "#fff",
+                          fontSize: "1rem",
+                          textAlign: "center",
+                        }}
+                      >
                         <button
                           onClick={() =>
                             navigate(`/surveys/solved/${s.survey_id}`)
@@ -304,13 +326,6 @@ const headerStyle = {
   fontWeight: "600",
   fontSize: "1rem",
   borderBottom: "2px solid #ddd",
-};
-
-const cellStyle = {
-  padding: "2.2rem",
-  color: "#fff",
-  fontSize: "1rem",
-  textAlign: "center",
 };
 
 export default SolvedSurveys;
