@@ -16,10 +16,14 @@ function Header() {
 
   const profileMenuRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const burgerButtonRef = useRef(null);
 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
     };
 
     checkScreenSize();
@@ -69,20 +73,30 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    const handleClickOutsideMobile = (e) => {
+    const handleClickOutside = (e) => {
+      if (
+        burgerButtonRef.current &&
+        burgerButtonRef.current.contains(e.target)
+      ) {
+        return;
+      }
+
       if (
         mobileMenuOpen &&
         mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(e.target) &&
-        !e.target.closest("select")
+        !mobileMenuRef.current.contains(e.target)
       ) {
         setMobileMenuOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutsideMobile);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutsideMobile);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileMenuOpen]);
+
+  const handleBurgerClick = () => {
+    setMobileMenuOpen((prev) => !prev);
+  };
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -107,9 +121,7 @@ function Header() {
       <header
         className={`${
           isMobile ? "fixed px-5" : "relative"
-        } top-0 left-0 right-0 z-50 h-16 bg-white flex items-center justify-between ${
-          isArabic ? "flex-row-reverse" : "flex-row"
-        }`}
+        } top-0 left-0 right-0 z-50 h-16 bg-white flex items-center justify-between`}
       >
         <div className={`flex-shrink-0 order-${logoOrder}`}>
           <img src={logo} alt="Logo" className="h-9 w-auto" />
@@ -186,10 +198,11 @@ function Header() {
 
         <div className={`md:hidden order-${isArabic ? 1 : 3}`}>
           <button
-            className="text-2xl"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            ref={burgerButtonRef}
+            className="text-2xl z-50 relative"
+            onClick={handleBurgerClick}
           >
-            ☰
+            {mobileMenuOpen ? "✕" : "☰"}
           </button>
         </div>
 
@@ -268,6 +281,9 @@ function Header() {
           </div>
         )}
       </header>
+
+      {/* مسافة للهيدر الثابت */}
+      {isMobile && <div className="h-16"></div>}
     </Container>
   );
 }
