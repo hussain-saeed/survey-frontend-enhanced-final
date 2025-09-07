@@ -246,6 +246,7 @@ function ResearcherDashboard() {
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
               backgroundColor: "#395692",
               minWidth: isMobile ? "100%" : "auto",
+              padding: "10px"
             }}
           >
             <thead style={{ backgroundColor: "#395692", color: "#fff" }}>
