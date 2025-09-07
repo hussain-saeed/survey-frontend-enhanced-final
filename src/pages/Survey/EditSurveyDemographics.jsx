@@ -32,7 +32,6 @@ const EditSurveyDemographics = () => {
   const [fields, setFields] = useState([]);
   const [professions, setProfessions] = useState([]);
 
-  // دالة للكشف عن حجم الشاشة
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 1024;
@@ -51,7 +50,6 @@ const EditSurveyDemographics = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // إغلاق السايد بار عند النقر خارجها على الجوال
   const handleCloseSidebar = () => {
     if (isMobile && sidebarOpen) {
       setSidebarOpen(false);
@@ -277,7 +275,6 @@ const EditSurveyDemographics = () => {
       dir={isRTL ? "rtl" : "ltr"}
       onClick={handleCloseSidebar}
     >
-      {/* زر تبديل السايد بار للجوال */}
       {isMobile && (
         <button
           onClick={(e) => {
@@ -307,7 +304,6 @@ const EditSurveyDemographics = () => {
         </button>
       )}
 
-      {/* طبقة شفافة لإغلاق السايد بار عند النقر عليها */}
       {isMobile && sidebarOpen && (
         <div
           style={{
@@ -323,7 +319,6 @@ const EditSurveyDemographics = () => {
         />
       )}
 
-      {/* السايد بار */}
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -346,7 +341,6 @@ const EditSurveyDemographics = () => {
         />
       </div>
 
-      {/* المحتوى الرئيسي */}
       <main
         style={{
           flex: 1,
@@ -408,7 +402,7 @@ const EditSurveyDemographics = () => {
                 style={{
                   display: "flex",
                   gap: "1rem",
-                  flexWrap: "wrap", // يسمح للعناصر بالانتقال لصف جديد إذا لزم الأمر
+                  flexWrap: "wrap",  
                 }}
               >
                 <input
@@ -417,14 +411,14 @@ const EditSurveyDemographics = () => {
                   value={ageMin}
                   onChange={(e) => setAgeMin(e.target.value)}
                   style={{
-                    flex: "1 1 45%", // يتقلص وينمو مع نسبة أساسية 45%
-                    minWidth: "120px", // عرض أدنى لمنع الصغر المفرط
+                    flex: "1 1 45%",
+                    minWidth: "120px",
                     padding: "10px",
                     borderRadius: "5px",
                     border: "1px solid #395692",
                     background: "#D2DBEC",
                     color: "#9A9DA4",
-                    boxSizing: "border-box", // يضمن أن الحشو لا يزيد العرض
+                    boxSizing: "border-box",
                   }}
                 />
                 <input
@@ -433,14 +427,14 @@ const EditSurveyDemographics = () => {
                   value={ageMax}
                   onChange={(e) => setAgeMax(e.target.value)}
                   style={{
-                    flex: "1 1 45%", // يتقلص وينمو مع نسبة أساسية 45%
-                    minWidth: "120px", // عرض أدنى لمنع الصغر المفرط
+                    flex: "1 1 45%",
+                    minWidth: "120px", 
                     padding: "10px",
                     borderRadius: "5px",
                     border: "1px solid #395692",
                     background: "#D2DBEC",
                     color: "#9A9DA4",
-                    boxSizing: "border-box", // يضمن أن الحشو لا يزيد العرض
+                    boxSizing: "border-box",
                   }}
                 />
               </div>
@@ -461,7 +455,7 @@ const EditSurveyDemographics = () => {
                 style={{
                   display: "flex",
                   gap: "1rem",
-                  flexWrap: "wrap", // يسمح للعناصر بالانتقال لصف جديد إذا لزم الأمر
+                  flexWrap: "wrap",
                 }}
               >
                 <input
@@ -470,14 +464,14 @@ const EditSurveyDemographics = () => {
                   value={incomeMin}
                   onChange={(e) => setIncomeMin(e.target.value)}
                   style={{
-                    flex: "1 1 45%", // يتقلص وينمو مع نسبة أساسية 45%
-                    minWidth: "120px", // عرض أدنى لمنع الصغر المفرط
+                    flex: "1 1 45%", 
+                    minWidth: "120px", 
                     padding: "10px",
                     borderRadius: "5px",
                     border: "1px solid #395692",
                     background: "#D2DBEC",
                     color: "#9A9DA4",
-                    boxSizing: "border-box", // يضمن أن الحشو لا يزيد العرض
+                    boxSizing: "border-box", 
                   }}
                 />
                 <input
@@ -486,14 +480,14 @@ const EditSurveyDemographics = () => {
                   value={incomeMax}
                   onChange={(e) => setIncomeMax(e.target.value)}
                   style={{
-                    flex: "1 1 45%", // يتقلص وينمو مع نسبة أساسية 45%
-                    minWidth: "120px", // عرض أدنى لمنع الصغر المفرط
+                    flex: "1 1 45%", 
+                    minWidth: "120px",
                     padding: "10px",
                     borderRadius: "5px",
                     border: "1px solid #395692",
                     background: "#D2DBEC",
                     color: "#9A9DA4",
-                    boxSizing: "border-box", // يضمن أن الحشو لا يزيد العرض
+                    boxSizing: "border-box",
                   }}
                 />
               </div>
