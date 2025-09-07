@@ -25,11 +25,11 @@ import "./css/Home.css";
 import Container from "../components/Container";
 import GetStarted from "../components/GetStarted";
 function Home() {
+  const navigate = useNavigate();
+
   const { t, i18n } = useTranslation();
   const direction = i18n.language === "ar" ? "rtl" : "ltr";
-  const navigate = useNavigate();
   const containerRef = useRef(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
 
@@ -38,7 +38,6 @@ function Home() {
       if (!containerRef.current) return;
       const container = containerRef.current;
       const totalItems = container.children.length;
-      const containerWidth = container.offsetWidth;
       const itemsPerView = window.innerWidth >= 1024 ? 2 : 1;
       setMaxIndex(Math.max(totalItems - itemsPerView, 0));
     };
@@ -58,8 +57,11 @@ function Home() {
       const gap = parseInt(getComputedStyle(container).gap || 32);
       const itemWidth = item.offsetWidth + gap;
 
+      const scrollAmount =
+        (index - currentIndex) * itemWidth * (i18n.language === "ar" ? -1 : 1);
+
       container.scrollBy({
-        left: (index - currentIndex) * itemWidth,
+        left: scrollAmount,
         behavior: "smooth",
       });
 
@@ -241,8 +243,9 @@ function Home() {
                   opacity: currentIndex === 0 ? 0.5 : 1,
                 }}
               >
-                {i18n.language === "ar" ? "→" : "←"}
+                {direction === "rtl" ? "→" : "←"}
               </button>
+
               <button
                 onClick={handleNext}
                 disabled={currentIndex === maxIndex}
@@ -260,11 +263,10 @@ function Home() {
                   opacity: currentIndex === maxIndex ? 0.5 : 1,
                 }}
               >
-                {i18n.language === "ar" ? "←" : "→"}
+                {direction === "rtl" ? "←" : "→"}
               </button>
             </div>
 
-            {/* Services Carousel */}
             <div
               style={{
                 overflow: "hidden",
@@ -283,7 +285,9 @@ function Home() {
                   overflowX: "auto",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
+                  direction: i18n.language === "ar" ? "rtl" : "ltr",
                 }}
+                className="custom-scrollbar"
               >
                 {/*first*/}
                 <div
@@ -675,7 +679,7 @@ function Home() {
       </section> */}
 
       <Container>
-        <GetStarted/>
+        <GetStarted />
       </Container>
     </div>
   );
