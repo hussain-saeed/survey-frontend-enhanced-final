@@ -181,15 +181,19 @@ function AboutUs() {
       </div>
 
       {/* Our Mission Section */}
-      <section data-aos="fade-up" className="bg-[#a7a7a72f] py-12">
+      <section data-aos="fade-up" className={`bg-[#a7a7a72f] py-12`}>
         <Container>
           <div
-            className="
-              flex flex-col lg:flex-row 
+            className={`flex flex-col lg:flex-row 
               items-center
-              text-center lg:text-left 
+              text-center 
               lg:justify-between gap-8
-            "
+              ${
+                localStorage.getItem("i18nextLng") === "ar"
+                  ? "lg:text-right"
+                  : "lg:text-left"
+              }
+            `}
           >
             <div className="max-w-[560px]">
               <h2 className="text-3xl lg:text-4xl font-bold text-[#23407F] mb-4">
