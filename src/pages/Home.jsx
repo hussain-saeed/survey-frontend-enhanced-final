@@ -490,15 +490,28 @@ function Home() {
                 src={empoweringTextImage}
                 alt="Curvy Overlay"
                 className="absolute top-0 left-0 w-[50px] h-[40px] z-0 hidden lg:block"
+                style={{
+                  transform:
+                    direction === "rtl" ? "rotate(90deg)" : "rotate(0)",
+                  right: direction === "rtl" ? "0" : "unset",
+                }}
               />
 
-              <p className="text-[28px] sm:text-[32px] lg:text-[35px] font-semibold text-[#23407F] leading-tight mb-4 font-poppins relative z-10">
+              <p
+                className={`text-[28px] sm:text-[32px] lg:text-[35px] font-semibold text-[#23407F] leading-tight mb-4 font-poppins relative z-10 ${
+                  direction === "rtl" ? "lg:text-right" : "lg:text-left"
+                }`}
+              >
                 Empowering Research
                 <br />
                 in The Middle East
               </p>
 
-              <span className="block max-w-[500px] text-[15px] sm:text-[16px] text-[#333] leading-relaxed font-poppins">
+              <span
+                className={`block max-w-[500px] text-[15px] sm:text-[16px] text-[#333] leading-relaxed font-poppins ${
+                  direction === "rtl" ? "lg:text-right" : "lg:text-left"
+                }`}
+              >
                 Survey Ink empowers Middle East researchers with verified
                 participants, expert support, and bilingual tools for faster,
                 affordable insights. Freelancers gain flexible, meaningful work
@@ -520,7 +533,9 @@ function Home() {
           <img
             src={empoweringImage}
             alt="Empowering Illustration"
-            className="hidden lg:block absolute bottom-0 right-5 w-[45%] object-contain"
+            className={`hidden lg:block absolute bottom-0  ${
+              direction === "rtl" ? "left-5" : "right-5"
+            } w-[45%] object-contain`}
           />
         </Container>
       </section>
