@@ -243,12 +243,12 @@ const CreateSurvey = () => {
         style={{
           flex: 1,
           padding: isMobile
-            ? "1rem 1rem 1.5rem 1rem"
-            : "4.5rem 1.5rem 4.5rem 3rem",
+            ? "1rem 1rem 5rem 1rem"
+            : "4.8rem 1.5rem 4.5rem 3rem",
           overflowY: "auto",
           minHeight: "100vh",
           boxSizing: "border-box",
-          marginTop: isMobile ? "80px" : "0",
+          marginTop: isMobile ? "35px" : "0",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
           transition: "filter 0.3s ease",
           display: "flex",
