@@ -100,13 +100,31 @@ function AboutUs() {
               w-full
             "
           >
-            <div className="flex-1 text-center lg:text-left mb-6 lg:mb-0">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#23407F] leading-snug">
+            <div
+              className={`flex-1 text-center ${
+                localStorage.getItem("i18nextLng") === "ar"
+                  ? "lg:text-right"
+                  : "lg:text-left"
+              } mb-6 lg:mb-0`}
+            >
+              <h2
+                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-[#23407F] leading-snug ${
+                  localStorage.getItem("i18nextLng") === "ar"
+                    ? "lg:text-right"
+                    : "lg:text-left"
+                }`}
+              >
                 Empowering Research
                 <br />
                 in The Middle East
               </h2>
-              <p className="text-[#555] text-base mt-4 max-w-[500px] mx-auto lg:mx-0">
+              <p
+                className={`text-[#555] text-base mt-4 max-w-[500px] mx-auto lg:mx-0 ${
+                  localStorage.getItem("i18nextLng") === "ar"
+                    ? "lg:text-right"
+                    : "lg:text-left"
+                }`}
+              >
                 Survey Ink empowers Middle East researchers with verified
                 participants, expert support, and bilingual tools for faster,
                 affordable insights. Freelancers gain flexible, meaningful work
