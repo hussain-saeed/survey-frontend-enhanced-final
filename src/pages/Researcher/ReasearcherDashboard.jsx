@@ -181,11 +181,11 @@ function ResearcherDashboard() {
       <main
         style={{
           flex: 1,
-          padding: "1rem",
+          padding: "1rem 1rem 5rem 1rem",
           overflowY: "auto",
           minHeight: "100vh",
           boxSizing: "border-box",
-          marginTop: isMobile ? "80px" : "0",
+          marginTop: "27px",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
           transition: "filter 0.3s ease",
         }}
@@ -246,7 +246,7 @@ function ResearcherDashboard() {
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
               backgroundColor: "#395692",
               minWidth: isMobile ? "100%" : "auto",
-              padding: "10px"
+              padding: "10px",
             }}
           >
             <thead style={{ backgroundColor: "#395692", color: "#fff" }}>
@@ -260,7 +260,13 @@ function ResearcherDashboard() {
                     borderBottom: "1px solid #ddd",
                   }}
                 >
-                  {isRTL ? "عنوان الاستبيان" : "Survey Title"}
+                  {isRTL
+                    ? isMobile
+                      ? "عنوان الاستبيان وحالته"
+                      : "عنوان الاستبيان"
+                    : isMobile
+                    ? "Survey Title and Its Status"
+                    : "Survey Title "}
                 </th>
                 <th
                   style={{
@@ -284,17 +290,19 @@ function ResearcherDashboard() {
                 >
                   {isRTL ? "المطلوب" : "Required"}
                 </th>
-                <th
-                  style={{
-                    padding: "14px 16px",
-                    textAlign: "center",
-                    fontWeight: "600",
-                    fontSize: window.innerWidth < 500 ? "12px" : "15px",
-                    borderBottom: "1px solid #ddd",
-                  }}
-                >
-                  {isRTL ? "الحالة" : "Status"}
-                </th>
+                {!isMobile ? (
+                  <th
+                    style={{
+                      padding: "14px 16px",
+                      textAlign: "center",
+                      fontWeight: "600",
+                      fontSize: window.innerWidth < 500 ? "12px" : "15px",
+                      borderBottom: "1px solid #ddd",
+                    }}
+                  >
+                    {isRTL ? "الحالة" : "Status"}
+                  </th>
+                ) : null}
               </tr>
             </thead>
             <tbody>
@@ -302,34 +310,62 @@ function ResearcherDashboard() {
                 currentSurveys.map((survey, index) => (
                   <React.Fragment key={survey.id}>
                     <tr>
-                      <td style={cell}>{survey.title}</td>
+                      <td style={cell} className="flex  flex-col lg:block">
+                        {survey.title}
+                        {isMobile ? (
+                          survey.actual_submissions >=
+                          survey.required_submissions ? (
+                            <span
+                              style={{
+                                color: "#f44336",
+                                fontSize: "16px",
+                                fontWeight: "900",
+                              }}
+                            >
+                              Not Active
+                            </span>
+                          ) : (
+                            <span
+                              style={{
+                                color: "#4caf50",
+                                fontSize: "16px",
+                                fontWeight: "900",
+                              }}
+                            >
+                              Active
+                            </span>
+                          )
+                        ) : null}
+                      </td>
                       <td style={cell}>{survey.actual_submissions}</td>
                       <td style={cell}>{survey.required_submissions}</td>
-                      <td style={cell}>
-                        <span
-                          style={{
-                            backgroundColor:
-                              survey.actual_submissions >=
-                              survey.required_submissions
-                                ? "#f44336"
-                                : "#4caf50",
-                            padding: "4px 10px",
-                            borderRadius: "20px",
-                            color: "#fff",
-                            fontWeight: "bold",
-                            fontSize: "0.85rem",
-                          }}
-                        >
-                          {survey.actual_submissions >=
-                          survey.required_submissions
-                            ? isRTL
-                              ? "نعم"
-                              : "Closed"
-                            : isRTL
-                            ? "لا"
-                            : "Active"}
-                        </span>
-                      </td>
+                      {!isMobile ? (
+                        <td style={cell}>
+                          <span
+                            style={{
+                              backgroundColor:
+                                survey.actual_submissions >=
+                                survey.required_submissions
+                                  ? "#f44336"
+                                  : "#4caf50",
+                              padding: "4px 10px",
+                              borderRadius: "20px",
+                              color: "#fff",
+                              fontWeight: "bold",
+                              fontSize: "0.85rem",
+                            }}
+                          >
+                            {survey.actual_submissions >=
+                            survey.required_submissions
+                              ? isRTL
+                                ? "نعم"
+                                : "Closed"
+                              : isRTL
+                              ? "لا"
+                              : "Active"}
+                          </span>
+                        </td>
+                      ) : null}
                     </tr>
                     <tr>
                       <td colSpan="4" style={{ padding: 0 }}>
