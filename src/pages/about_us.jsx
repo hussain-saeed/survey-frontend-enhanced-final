@@ -362,7 +362,12 @@ function AboutUs() {
               <img
                 src={empoweringTextImage}
                 alt="Curvy Overlay"
-                className="absolute top-0 left-0 w-[50px] h-[40px] z-10 hidden md:block"
+                className="absolute top-0 w-[50px] h-[40px] z-10 hidden md:block"
+                style={{
+                  left: isEnglish ? "0" : "unset",
+                  right: isEnglish ? "unset" : "0",
+                  transform: isEnglish ? "rotate(0deg)" : "rotate(90deg)",
+                }}
               />
               <h2 className="text-[32px] font-bold text-[#23407F] leading-tight mb-2 relative z-20">
                 Why Join SurveyInk?
