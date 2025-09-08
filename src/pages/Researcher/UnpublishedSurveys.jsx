@@ -218,7 +218,6 @@ function UnpublishedSurveys({ isRTL }) {
           overflowY: "auto",
           minHeight: "100vh",
           boxSizing: "border-box",
-          marginTop: isMobile ? "80px" : "0",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
           transition: "filter 0.3s ease",
         }}
@@ -251,7 +250,7 @@ function UnpublishedSurveys({ isRTL }) {
               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
               padding: "1rem",
               maxWidth: "1000px",
-              margin: "18px auto",
+              margin: "18px auto 0 auto",
             }}
           >
             <table

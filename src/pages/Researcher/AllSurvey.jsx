@@ -220,7 +220,6 @@ function AllSurveys({ isRTL }) {
           overflowY: "auto",
           minHeight: "100vh",
           boxSizing: "border-box",
-          marginTop: isMobile ? "80px" : "0",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
           transition: "filter 0.3s ease",
         }}

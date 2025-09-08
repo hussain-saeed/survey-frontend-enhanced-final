@@ -348,7 +348,6 @@ const EditSurveyDemographics = () => {
           overflowY: "auto",
           minHeight: "100vh",
           boxSizing: "border-box",
-          marginTop: isMobile ? "80px" : "56px",
           transition: "margin 0.3s ease, filter 0.3s ease",
           filter: isMobile && sidebarOpen ? "blur(2px)" : "none",
         }}

@@ -39,7 +39,12 @@ function Header() {
   const isAuthenticated = !!localStorage.getItem("access");
 
   const handleLogout = async (e) => {
-    e.preventDefault();
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    localStorage.removeItem("user");
+    navigate("/login", { replace: true });
+    {
+      /*e.preventDefault();
     try {
       const token = localStorage.getItem("access");
       const response = await fetch("https://survey-ink.com/api/logout/", {
@@ -56,6 +61,7 @@ function Header() {
       }
     } catch (error) {
       console.error(error);
+    }*/
     }
   };
 

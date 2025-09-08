@@ -177,7 +177,6 @@ function SurveyForm() {
           padding: "2rem",
           marginLeft: "auto",
           marginRight: "auto",
-          marginTop: isSmallScreen ? "65px" : "0",
         }}
       >
         {step === 2 && timeLeft !== null && (

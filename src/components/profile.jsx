@@ -71,7 +71,14 @@ const Profile = () => {
   };
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        background:
+          "linear-gradient(91deg, rgba(255,255,255,0.00) 0.52%, rgba(241,147,3,0.32) 56.09%, rgba(57,86,146,0.55) 99.35%)",
+      }}
+    >
       <style>
         {`.special-page #root > div:first-child {
           background-image: none !important;
@@ -107,7 +114,6 @@ const Profile = () => {
               flexDirection: "column",
               justifyContent: "center",
               position: "relative",
-              marginTop: isSmallScreen ? "65px" : "0",
             }}
           >
             {/* صورة و معلومات قصيرة */}

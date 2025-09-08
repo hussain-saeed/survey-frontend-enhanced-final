@@ -107,13 +107,13 @@ function FreelancerSidebar({
   return (
     <aside
       style={{
-        width: "300px",
+        width: "280px",
         backgroundColor: "#d5e2f7",
         color: "#000",
         height: isMobile ? "100vh" : "100%",
         padding: "1rem",
         position: isMobile ? "fixed" : "relative",
-        top: 0,
+        top: isMobile ? "-68px" : "0",
         left: isRTL ? "auto" : 0,
         right: isRTL ? 0 : "auto",
         bottom: 0,

@@ -58,7 +58,6 @@ const SurveySubmissions = () => {
         color: '#35508C',
         fontWeight: 'bold'
       }}
-      className="mt-16 lg:mt-0"
       >
         Survey Submissions
       </h2>

@@ -68,7 +68,6 @@ function SolvedSurveyForm() {
           padding: "2rem",
           margin: "0 auto",
           color: "white",
-          marginTop: isSmallScreen ? "64px" : "0px",
         }}
       >
         <h2 style={{ color: "#35508C" }}>
