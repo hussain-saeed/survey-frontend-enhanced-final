@@ -85,7 +85,7 @@ function Login() {
       <div style={styles.mainContainer}>
         <div
           style={styles.contentWrapper}
-          className="pt-32 pb-36 md:pt-10 md:pb-20"
+          className="pt-5 pb-20"
         >
           <div style={styles.logoFormContainer}>
             <img src={logo} alt="Logo" style={styles.logo} />
@@ -197,7 +197,6 @@ const styles = {
   page: {
     minHeight: "100vh",
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
     background:
       "linear-gradient(91deg, rgba(255, 255, 255, 0.00) 0.52%, rgba(241, 147, 3, 0.32) 56.09%, rgba(57, 86, 146, 0.55) 99.35%)",
