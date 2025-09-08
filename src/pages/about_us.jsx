@@ -35,6 +35,8 @@ function AboutUs() {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  const isEnglish = localStorage.getItem("i18nextLng") !== "ar";
+
   return (
     <main>
       <section
@@ -244,7 +246,8 @@ function AboutUs() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  paddingLeft: "20px",
+                  paddingLeft: isEnglish ? "20px" : "0",
+                  paddingRight: isEnglish ? "0" : "20px",
                 }}
               >
                 <div style={{ width: "75%", paddingBottom: "30px" }}>
@@ -271,7 +274,8 @@ function AboutUs() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  paddingLeft: "20px",
+                  paddingLeft: isEnglish ? "20px" : "0",
+                  paddingRight: isEnglish ? "0" : "20px",
                 }}
               >
                 <div style={{ width: "75%", paddingBottom: "30px" }}>
@@ -298,7 +302,8 @@ function AboutUs() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  paddingLeft: "20px",
+                  paddingLeft: isEnglish ? "20px" : "0",
+                  paddingRight: isEnglish ? "0" : "20px",
                 }}
               >
                 <div style={{ width: "75%", paddingBottom: "30px" }}>
@@ -325,7 +330,8 @@ function AboutUs() {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  paddingLeft: "20px",
+                  paddingLeft: isEnglish ? "20px" : "0",
+                  paddingRight: isEnglish ? "0" : "20px",
                 }}
               >
                 <div style={{ width: "75%", paddingBottom: "30px" }}>
