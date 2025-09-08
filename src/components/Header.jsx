@@ -39,6 +39,7 @@ function Header() {
   const isAuthenticated = !!localStorage.getItem("access");
 
   const handleLogout = async (e) => {
+    setProfileMenuOpen(false);
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     localStorage.removeItem("user");
