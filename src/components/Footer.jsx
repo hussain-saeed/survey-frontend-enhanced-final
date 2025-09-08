@@ -3,6 +3,7 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import logo from "../assets/HomeLogo.png";
 import Container from "./Container";
 import mobile from "../assets/mobile.png";
+import mobile2 from "../assets/mobile2.png";
 
 function Footer() {
   const { t } = useTranslation();
@@ -88,12 +89,19 @@ function Footer() {
           </p>
         </div>
       </Container>
-      <img
-        src={mobile}
-        alt="mobile"
-        className="absolute right-6 bottom-48 block sm:hidden w-48 h-64"
-        style={{ animation: "float 2s ease-in-out infinite" }}
-      />
+      <div>
+        <img
+          src={localStorage.getItem("i18nextLng") === "ar" ? mobile2 : mobile}
+          alt="mobile"
+          className={`absolute ${
+            localStorage.getItem("i18nextLng") === "ar" ? "left-6" : "right-6"
+          } bottom-48 block sm:hidden w-48 h-64`}
+          style={{
+            animation: "float 2s ease-in-out infinite",
+          }}
+        />
+      </div>
+
       <style>
         {`
   @keyframes float {
