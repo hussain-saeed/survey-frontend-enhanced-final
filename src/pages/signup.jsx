@@ -271,7 +271,7 @@ const Signup = () => {
         backgroundRepeat: "no-repeat",
         direction,
       }}
-      className="pt-32 pb-36 md:pt-10 md:pb-20"
+      className="pt-8 pb-20"
     >
       <Container>
         <img
@@ -321,6 +321,7 @@ const Signup = () => {
               fontWeight: 400,
               marginBottom: "16px",
               textAlign,
+              display: isRTL ? "flex" : "block",
             }}
           >
             {t("Already have an account ?")}{" "}

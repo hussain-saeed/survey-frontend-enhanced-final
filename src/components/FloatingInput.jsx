@@ -34,7 +34,6 @@ const FloatingInput = ({ name, value, onChange, type, direction, label }) => {
       className="floating-input-container"
       style={{
         ...styles.field,
-        flexDirection: direction === "rtl" ? "row-reverse" : "row",
         width: "100%",
       }}
     >
