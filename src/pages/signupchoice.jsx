@@ -21,7 +21,6 @@ function SignupChoice() {
       style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "center",
         minHeight: "100vh",
         width: "100%",
         background:
@@ -46,6 +45,9 @@ function SignupChoice() {
           flexDirection: "column",
           alignItems: "center",
           transition: "all 0.3s ease",
+          height: "500px",
+          marginTop: "30px",
+          marginBottom: "80px",
         }}
       >
         {/* Logo */}
