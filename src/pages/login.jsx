@@ -35,7 +35,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/login/", {
+      const response = await fetch("https://survey-ink.com/api/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,10 +83,7 @@ function Login() {
     <div style={{ ...styles.page, direction }}>
       <ToastContainer />
       <div style={styles.mainContainer}>
-        <div
-          style={styles.contentWrapper}
-          className="pt-5 pb-20"
-        >
+        <div style={styles.contentWrapper} className="pt-5 pb-20">
           <div style={styles.logoFormContainer}>
             <img src={logo} alt="Logo" style={styles.logo} />
 
