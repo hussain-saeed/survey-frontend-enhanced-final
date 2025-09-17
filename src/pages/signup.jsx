@@ -52,16 +52,16 @@ const Signup = () => {
       try {
         const [countries, fields, professions, universities] =
           await Promise.all([
-            fetch("https://survey-ink.com/api/countries/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/countries/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/fields_of_study/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/fields_of_study/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/professions/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/professions/").then((res) =>
               res.json()
             ),
-            fetch("https://survey-ink.com/api/universities/").then((res) =>
+            fetch("http://127.0.0.1:8000/api/universities/").then((res) =>
               res.json()
             ),
           ]);
@@ -98,7 +98,7 @@ const Signup = () => {
     const payload = { ...formData, role };
 
     try {
-      const res = await fetch(`https://survey-ink.com/api/signup/${role}/`, {
+      const res = await fetch(`http://127.0.0.1:8000/api/signup/${role}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

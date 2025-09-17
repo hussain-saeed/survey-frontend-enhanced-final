@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import logo from "../assets/HomeLogo.png";
 import profileIcon from "../assets/profile-circle_svgrepo.com.svg";
 import Container from "./Container";
+import logoFinal from "../assets/logo-final.svg";
 
 function Header() {
   const { i18n } = useTranslation();
@@ -131,7 +132,7 @@ function Header() {
         } top-0 left-0 right-0 z-50 h-16 bg-white flex items-center justify-between`}
       >
         <div className={`flex-shrink-0 order-${logoOrder}`}>
-          <img src={logo} alt="Logo" className="h-9 w-auto" />
+          <img src={logoFinal} alt="Logo" className="h-9 w-auto" />
         </div>
 
         <nav

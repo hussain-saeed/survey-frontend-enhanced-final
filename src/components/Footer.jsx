@@ -4,6 +4,7 @@ import logo from "../assets/HomeLogo.png";
 import Container from "./Container";
 import mobile from "../assets/mobile.png";
 import mobile2 from "../assets/mobile2.png";
+import logoFinal from "../assets/logo-final.svg";
 
 function Footer() {
   const { t } = useTranslation();
@@ -83,7 +84,7 @@ function Footer() {
 
         {/* Bottom Section */}
         <div className="mt-10 flex sm:justify-center items-center gap-2 flex-wrap">
-          <img src={logo} alt="SurveyINK Logo" className="h-7 object-contain" />
+          <img src={logoFinal} alt="SurveyINK Logo" className="h-7 object-contain" />
           <p className="text-sm text-[#555]">
             &copy; 2025 – All Rights Reserved surveyink
           </p>
