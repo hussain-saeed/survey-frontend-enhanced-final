@@ -27,6 +27,8 @@ import GetStarted from "../components/GetStarted";
 import exchange1 from "../assets/exchange1.png";
 import exchange2 from "../assets/exvhange2.png";
 import exchange from "../assets/exchange.mp4";
+import survTablet from "../assets/survTablet.jpg";
+import survTablet2 from "../assets/survTablet2.jpg"
 
 function Home() {
   const navigate = useNavigate();
@@ -376,7 +378,7 @@ function Home() {
                 >
                   <div className="flex-2 w-full overflow-hidden">
                     <img
-                      src={surveyHosting}
+                      src={survTablet}
                       alt={t("surveyHosting")}
                       className="w-full h-full object-cover"
                     />
