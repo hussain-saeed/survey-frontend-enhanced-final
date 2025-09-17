@@ -24,6 +24,10 @@ import empower from "../assets/3d-rendering-isometric-fdgdf 1.png";
 import "./css/Home.css";
 import Container from "../components/Container";
 import GetStarted from "../components/GetStarted";
+import exchange1 from "../assets/exchange1.png";
+import exchange2 from "../assets/exvhange2.png";
+import exchange from "../assets/exchange.mp4";
+
 function Home() {
   const navigate = useNavigate();
 
@@ -32,6 +36,16 @@ function Home() {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
+
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [exchange1, exchange2];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev === 0 ? 1 : 0));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const updateMaxIndex = () => {
@@ -458,12 +472,17 @@ function Home() {
             </div>
 
             {/* Right Side - Image */}
-            <div className="flex-1 min-w-[280px] text-center lg:text-right">
-              <img
-                src={dollarImage}
-                alt="Currency Support"
-                className="max-w-full h-auto mx-auto lg:mx-0"
-              />
+            <div className="lg:w-[42%] w-[90%] min-h-[197px] max-h-[197px] rounded-xl overflow-hidden relative">
+              {images.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt="Currency Exchange"
+                  className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ${
+                    currentImage === index ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </section>
