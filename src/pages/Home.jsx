@@ -28,7 +28,8 @@ import exchange1 from "../assets/exchange1.png";
 import exchange2 from "../assets/exvhange2.png";
 import exchange from "../assets/exchange.mp4";
 import survTablet from "../assets/survTablet.jpg";
-import survTablet2 from "../assets/survTablet2.jpg"
+import survTablet2 from "../assets/survTablet2.jpg";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 function Home() {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ function Home() {
 
         {/* Content Overlay */}
         <Container className="h-full" style={{ direction }}>
-          <div className="relative z-10 text-white h-full flex flex-col justify-center">
+          <div className="relative z-10 text-white h-full flex flex-col justify-center ">
             <div className="max-w-[704px]">
               <p className="text-xl max-w-[800px] mb-8 opacity-95 text-start">
                 {t("Welcome to surveyInk")}
@@ -130,6 +131,43 @@ function Home() {
                 >
                   {t("Get_Started") || "Get Started"}
                 </a>
+              </div>
+            </div>
+            <div className="md:flex justify-between items-end absolute bottom-0 w-[100%] pb-[22px] hidden">
+              <span className="text-[20px]">Follow us</span>
+              <div className="flex items-center gap-3">
+                <div
+                  style={{
+                    border: "2px solid white",
+                    padding: "2px",
+                    borderRadius: "7px",
+                  }}
+                >
+                  <a href="https://facebook.com/surveyink" className="text-xl">
+                    <FaFacebookF />
+                  </a>
+                </div>
+                <a
+                  href="https://instagram.com/surveyink"
+                  className="text-[32px]"
+                >
+                  <FaInstagram />
+                </a>
+
+                <div
+                  style={{
+                    border: "2px solid white",
+                    padding: "2px",
+                    borderRadius: "7px",
+                  }}
+                >
+                  <a
+                    href="https://linkedin.com/company/surveyink"
+                    className="text-xl"
+                  >
+                    <FaLinkedinIn />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
