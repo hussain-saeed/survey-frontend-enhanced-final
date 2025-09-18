@@ -114,6 +114,33 @@ function Home() {
 
         {/* Content Overlay */}
         <Container className="h-full" style={{ direction }}>
+          <div className="text-white flex md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 items-center w-[90%] justify-between">
+            <span className="text-[20px]">Follow us</span>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <div>
+                <a href="https://facebook.com/surveyink">
+                  <FaFacebookF style={{ fontSize: "20px" }} />
+                </a>
+              </div>
+              <div>
+                <a href="https://instagram.com/surveyink">
+                  <FaInstagram style={{ fontSize: "20px" }} />
+                </a>
+              </div>
+              <div className="ml-[3px]">
+                <a href="https://linkedin.com/company/surveyink">
+                  <FaLinkedinIn style={{ fontSize: "20px" }} />
+                </a>
+              </div>
+            </div>
+          </div>
           <div className="relative z-10 text-white h-full flex flex-col justify-center ">
             <div className="max-w-[704px]">
               <p className="text-xl max-w-[800px] mb-8 opacity-95 text-start">

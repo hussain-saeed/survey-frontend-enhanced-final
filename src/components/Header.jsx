@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../assets/HomeLogo.png";
 import profileIcon from "../assets/profile-circle_svgrepo.com.svg";
 import Container from "./Container";
 import logoFinal from "../assets/logo-final.svg";
+import { FaSearch } from "react-icons/fa";
+import search from "../assets/search-normal.svg";
 
 function Header() {
   const { i18n } = useTranslation();
@@ -108,6 +110,7 @@ function Header() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/services", label: "Services" },
     { to: "/about", label: "About us" },
     { to: "/contact", label: "Contact us" },
   ];
@@ -136,19 +139,24 @@ function Header() {
         </div>
 
         <nav
-          className={`hidden md:flex gap-8 order-${navOrder} mx-auto ${
+          className={`hidden md:flex items-center gap-12 order-${navOrder} mx-auto ${
             isArabic ? "flex-row-reverse" : "flex-row"
           }`}
         >
           {displayedNavLinks.map((link, idx) => (
-            <Link
+            <NavLink
               key={idx}
               to={link.to}
-              className="uppercase text-black font-medium hover:border-b-2 border-black transition-all"
+              className={({ isActive }) =>
+                `transition-all ${isActive ? "text-[#FEA319]" : "text-black"}`
+              }
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
+          <div className="cursor-pointer">
+            <img src={search} alt="search"></img>
+          </div>
         </nav>
 
         <div className={`hidden md:flex items-center gap-4 order-${authOrder}`}>
@@ -241,7 +249,9 @@ function Header() {
                 {link.label}
               </Link>
             ))}
-
+            <div className="cursor-pointer">
+              <img src={search} alt="search"></img>
+            </div>
             <hr className="border-gray-300 my-2" />
 
             {/*<select
