@@ -7,8 +7,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Container from "../../components/Container";
 import GetStarted from "../../components/GetStarted";
+import {
+  FaUserCheck,
+  FaUserShield,
+  FaTools,
+  FaClipboard,
+  FaBan,
+  FaBook,
+  FaExclamationTriangle,
+  FaGavel,
+} from "react-icons/fa";
 
-const InfoBlock = ({ title, emoji, description, isLast }) => (
+const InfoBlock = ({ title, icon, description, isLast }) => (
   <div
     className="
       grid lg:grid-cols-[233px_5px_1fr] gap-6 items-center mb-10
@@ -18,7 +28,7 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
     <div className="text-[#395692] text-2xl font-semibold leading-relaxed flex items-center text-left lg:pl-12 relative">
       <span>{title}</span>
       <span className="hidden lg:inline absolute text-3xl -left-[5px] animate-slightScale">
-        {emoji}
+        {icon}
       </span>
 
       <style>
@@ -42,17 +52,14 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
       </style>
     </div>
 
-    {/* الخط العمودي */}
     <div className="hidden lg:block bg-[#F19303] w-[5px] min-h-[100px]" />
 
-    {/* لابتوب وفوق → bullets */}
     <ul className="hidden md:block text-md font-bold text-black leading-relaxed list-disc list-inside text-left">
       {description.map((point, i) => (
         <li key={i}>{point}</li>
       ))}
     </ul>
 
-    {/* موبايل وصغير → خطوط فاصلة */}
     <div className="md:hidden w-full text-md font-bold text-black leading-relaxed text-left">
       {description.map((point, i) => (
         <div
@@ -66,7 +73,6 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
       ))}
     </div>
 
-    {/* الخط الافقي بين البلوكات في الموبايل */}
     {!isLast && (
       <div className="lg:hidden w-full h-[3px] bg-[#F19303] my-4"></div>
     )}
@@ -83,7 +89,7 @@ function TermsAndConditions() {
   const content = [
     {
       title: "Eligibility",
-      emoji: "✅",
+      icon: <FaUserCheck />,
       description: [
         "Users must be at least 18 years old or of legal age in their area.",
         "They are responsible for providing accurate information.",
@@ -93,7 +99,7 @@ function TermsAndConditions() {
     },
     {
       title: "Account Responsibilities",
-      emoji: "🔑",
+      icon: <FaUserShield />,
       description: [
         "You must keep your account credentials confidential.",
         "You are responsible for all activities on your account.",
@@ -103,7 +109,7 @@ function TermsAndConditions() {
     },
     {
       title: "Service Modifications",
-      emoji: "⚙️",
+      icon: <FaTools />,
       description: [
         "Survey Ink may modify, suspend, or terminate services anytime.",
         "Notice may or may not be provided.",
@@ -113,7 +119,7 @@ function TermsAndConditions() {
     },
     {
       title: "User Obligations",
-      emoji: "📝",
+      icon: <FaClipboard />,
       description: [
         "Participants must answer surveys honestly.",
         "Follow the one-survey-per-person rule unless approved.",
@@ -123,7 +129,7 @@ function TermsAndConditions() {
     },
     {
       title: "Prohibited Conduct",
-      emoji: "🚫",
+      icon: <FaBan />,
       description: [
         "Users cannot engage in fraud or illegal activities.",
         "Do not infringe on intellectual property rights.",
@@ -133,7 +139,7 @@ function TermsAndConditions() {
     },
     {
       title: "Intellectual Property",
-      emoji: "📚",
+      icon: <FaBook />,
       description: [
         "Survey Ink owns all rights to the Platform.",
         "Users retain ownership of their own content.",
@@ -143,7 +149,7 @@ function TermsAndConditions() {
     },
     {
       title: "Limitation of Liability",
-      emoji: "⚠️",
+      icon: <FaExclamationTriangle />,
       description: [
         "Survey Ink is not liable for indirect or incidental damages.",
         "Consequential damages from platform use are excluded.",
@@ -153,7 +159,7 @@ function TermsAndConditions() {
     },
     {
       title: "Enforcement",
-      emoji: "👮",
+      icon: <FaGavel />,
       description: [
         "Misuse of the Platform may lead to suspension or termination.",
         "Legal action may be taken for violations.",
@@ -232,7 +238,7 @@ function TermsAndConditions() {
                 <InfoBlock
                   key={index}
                   title={item.title}
-                  emoji={item.emoji}
+                  icon={item.icon}
                   description={item.description}
                   isLast={index === content.length - 1}
                 />

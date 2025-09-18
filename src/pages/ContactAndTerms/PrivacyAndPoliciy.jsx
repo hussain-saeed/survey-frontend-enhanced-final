@@ -9,9 +9,21 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Container from "../../components/Container";
 import GetStarted from "../../components/GetStarted";
+import {
+  FaClipboardList,
+  FaBalanceScale,
+  FaCogs,
+  FaHandshake,
+  FaLock,
+  FaGlobe,
+  FaHourglassHalf,
+  FaUserEdit,
+  FaCookieBite,
+  FaSyncAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 
-// Reusable Info Block Component
-const InfoBlock = ({ title, emoji, description, isLast }) => (
+const InfoBlock = ({ title, icon, description, isLast }) => (
   <div
     className="
       grid lg:grid-cols-[233px_5px_1fr] gap-6 items-center mb-10
@@ -21,7 +33,7 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
     <div className="text-[#395692] text-2xl font-semibold leading-relaxed flex items-center text-left lg:pl-12 relative">
       <span>{title}</span>
       <span className="hidden lg:inline absolute text-3xl -left-[5px] animate-slightScale">
-        {emoji}
+        {icon}
       </span>
 
       <style>
@@ -45,17 +57,14 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
       </style>
     </div>
 
-    {/* الخط العمودي */}
     <div className="hidden lg:block bg-[#F19303] w-[5px] min-h-[100px]" />
 
-    {/* لابتوب وفوق → bullets */}
     <ul className="hidden md:block text-md font-bold text-black leading-relaxed list-disc list-inside text-left">
       {description.map((point, i) => (
         <li key={i}>{point}</li>
       ))}
     </ul>
 
-    {/* موبايل وصغير → خطوط فاصلة */}
     <div className="md:hidden w-full text-md font-bold text-black leading-relaxed text-left">
       {description.map((point, i) => (
         <div
@@ -69,7 +78,6 @@ const InfoBlock = ({ title, emoji, description, isLast }) => (
       ))}
     </div>
 
-    {/* الخط الافقي بين البلوكات في الموبايل */}
     {!isLast && (
       <div className="lg:hidden w-full h-[3px] bg-[#F19303] my-4"></div>
     )}
@@ -86,7 +94,7 @@ function PrivacyAndPoliciy() {
   const content = [
     {
       title: "Information We Collect",
-      emoji: "📋",
+      icon: <FaClipboardList />,
       description: [
         "We collect only necessary data to deliver our services.",
         "This includes contact details, demographics, and account credentials.",
@@ -96,7 +104,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Legal Process",
-      emoji: "⚖️",
+      icon: <FaBalanceScale />,
       description: [
         "We process personal data with your explicit consent for specific activities.",
         "Some processing is necessary to perform our contract with you.",
@@ -106,7 +114,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Data Usage",
-      emoji: "⚙️",
+      icon: <FaCogs />,
       description: [
         "Provide and maintain our services and process transactions.",
         "Match you with relevant surveys and communicate updates.",
@@ -116,7 +124,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Data Sharing",
-      emoji: "🤝",
+      icon: <FaHandshake />,
       description: [
         "We do not sell your personal information.",
         "Data may be shared with authorities or business transfers under safeguards.",
@@ -126,7 +134,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Data Security",
-      emoji: "🔒",
+      icon: <FaLock />,
       description: [
         "We use encryption for data in transit and at rest.",
         "Payments are processed through secure systems.",
@@ -136,7 +144,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "International Transfers",
-      emoji: "🌍",
+      icon: <FaGlobe />,
       description: [
         "Your data may be processed outside your jurisdiction.",
         "We ensure safeguards with standard contractual clauses.",
@@ -146,7 +154,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Data Retention",
-      emoji: "⏳",
+      icon: <FaHourglassHalf />,
       description: [
         "We retain data only as long as necessary for the stated purposes.",
         "Survey data retention depends on researcher requirements.",
@@ -156,7 +164,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Your Rights",
-      emoji: "📝",
+      icon: <FaUserEdit />,
       description: [
         "You may have rights to access, correct, delete, or restrict data.",
         "You can request your data in a portable format.",
@@ -166,7 +174,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Cookies and Tracking",
-      emoji: "🍪",
+      icon: <FaCookieBite />,
       description: [
         "We use cookies and similar technologies to maintain user sessions.",
         "Cookies help analyze platform performance.",
@@ -176,7 +184,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Updates to This Policy",
-      emoji: "🔄",
+      icon: <FaSyncAlt />,
       description: [
         "We may update this Privacy Policy periodically.",
         "Changes may reflect new practices or legal requirements.",
@@ -186,7 +194,7 @@ function PrivacyAndPoliciy() {
     },
     {
       title: "Contact Information",
-      emoji: "📧",
+      icon: <FaEnvelope />,
       description: [
         "For privacy-related questions, contact privacy@surveyink.com.",
         "You may also reach our Data Protection Officer.",
@@ -264,7 +272,7 @@ function PrivacyAndPoliciy() {
                 <InfoBlock
                   key={index}
                   title={item.title}
-                  emoji={item.emoji}
+                  icon={item.icon}
                   description={item.description}
                   isLast={index === content.length - 1}
                 />
