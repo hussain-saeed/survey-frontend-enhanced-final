@@ -55,7 +55,7 @@ function Pricing() {
         </div>
       </section>
 
-      <div className="relative">
+      <div className="relative font-bold">
         <div className="container mx-auto absolute z-[10] left-1/2 -translate-x-1/2 -top-[120px] lg:-top-[200px]">
           <div
             className="grid grid-cols-1 lg:grid-cols-4"
