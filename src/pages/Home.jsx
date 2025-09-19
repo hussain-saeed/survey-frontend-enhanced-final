@@ -113,11 +113,16 @@ function Home() {
         </video>
 
         {/* Content Overlay */}
-        <Container className="h-full" style={{ direction }}>
+        <div
+          className={`h-full
+            mx-auto px-4 w-[97%] 
+          `}
+        >
           <div className="text-white flex md:hidden absolute bottom-0 left-1/2 -translate-x-1/2 items-center w-[90%] justify-between">
             <span className="text-[20px]">Follow us</span>
             <div
               style={{
+                direction,
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -198,7 +203,7 @@ function Home() {
               </div>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Features Section */}
