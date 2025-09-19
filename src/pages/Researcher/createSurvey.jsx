@@ -75,7 +75,7 @@ const CreateSurvey = () => {
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/universities/");
+        const res = await fetch("https://survey-ink.com/api/universities/");
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data)) {
